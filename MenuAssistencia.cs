@@ -57,11 +57,19 @@ namespace Assistencia_Técnica
 
         private void sair_Click(object sender, EventArgs e)
         {
+            MySqlConnection mySqlConexao = MySqlConexao.ConexaoDB();
+            mySqlConexao.Close();
             Application.Exit();
         }
 
         private void CadFuncionario_Click(object sender, EventArgs e)
         {           
+            FormGerenFuncionarios menuFuncionarios = new FormGerenFuncionarios();
+            menuFuncionarios.ShowDialog();
+        }
+
+        private void CadServico_Click(object sender, EventArgs e)
+        {
 
         }
     }

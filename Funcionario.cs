@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assistencia_Técnica
 {
-    class Funcionario : Pessoa
+    public class Funcionario : Pessoa
     {
 
         private string funcao;

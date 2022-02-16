@@ -114,11 +114,23 @@
     <Compile Include="FormCadCliente.Designer.cs">
       <DependentUpon>FormCadCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCadFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCadFuncionario.Designer.cs">
+      <DependentUpon>FormCadFuncionario.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormGerenClientes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormGerenClientes.Designer.cs">
       <DependentUpon>FormGerenClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGerenFuncionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGerenFuncionarios.Designer.cs">
+      <DependentUpon>FormGerenFuncionarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Funcionario.cs" />
     <Compile Include="MenuAssistencia.cs">
@@ -140,8 +152,14 @@
     <EmbeddedResource Include="FormCadCliente.resx">
       <DependentUpon>FormCadCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCadFuncionario.resx">
+      <DependentUpon>FormCadFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormGerenClientes.resx">
       <DependentUpon>FormGerenClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGerenFuncionarios.resx">
+      <DependentUpon>FormGerenFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

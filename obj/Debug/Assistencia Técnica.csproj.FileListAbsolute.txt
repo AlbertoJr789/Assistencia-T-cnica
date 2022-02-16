@@ -13,3 +13,5 @@ C:\Users\jr_jo\Desktop\saida vs\Assistencia_Técnica.pdb
 D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.Properties.Resources.resources
 D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.exe
 D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.pdb
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormGerenFuncionarios.resources
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormCadFuncionario.resources

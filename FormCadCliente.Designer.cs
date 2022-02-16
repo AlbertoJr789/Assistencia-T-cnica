@@ -538,13 +538,13 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.label2.Location = new System.Drawing.Point(614, 510);
+            this.label2.Location = new System.Drawing.Point(600, 510);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(574, 60);
+            this.label2.Size = new System.Drawing.Size(588, 60);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Campos marcados com (*) requerem preenchimento obrigatório\r\nCampos opcionais  que" +
-    " contêm demarcações, (como CPF e Telefone Fixo) devem estar ou vazios ou totalme" +
-    "nte preenchidos.";
+            this.label2.Text = "Campos marcados com (*) requerem preenchimento obrigatório\r\nCampos opcionais que " +
+    "não contêm demarcações, como CPF e Telefone Fixo, devem estar ou vazios ou total" +
+    "mente preenchidos.\r\n";
             // 
             // tableLayoutPanel1
             // 

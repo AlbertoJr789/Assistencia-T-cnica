@@ -44,7 +44,7 @@ namespace Assistencia_Técnica
                 cpfCliente.Text = cliente.Cells["CPF"].Value.ToString();
 
                 //obtendo o endereço              
-                endereco = obterEndereco(cliente.Cells["Endereço"].Value.ToString());
+                endereco.obterEndereco(cliente.Cells["Endereço"].Value.ToString());
                 logradouroCliente.Text = endereco.Logradouro;
                 numeroEndCliente.Text = endereco.Numero;
                 bairroCliente.Text = endereco.Bairro;
@@ -53,7 +53,7 @@ namespace Assistencia_Técnica
 
                 //obtendo os telefones
 
-                contato = obterContato(cliente.Cells["Contato"].Value.ToString());
+                contato.obterContato(cliente.Cells["Contato"].Value.ToString());
                 telefone1Cliente.Text = contato.Contato1;
                 telefone2Cliente.Text = contato.Contato2;
 
@@ -105,7 +105,6 @@ namespace Assistencia_Técnica
                     contato.Contato2 = telefone2Cliente.Text;
                 }
                             
-
                 if (this.Edicao)
                     clienteDB.attCliente(this.IdEdit, this.IdEnd, this.IdCont, cliente, endereco, contato);
                 else
@@ -116,7 +115,6 @@ namespace Assistencia_Técnica
             }
             else
             {
-
                 if (this.Edicao)
                     MessageBox.Show("Erro ao atualizar cliente !\nVerifique se algum campo não foi devidamente preenchido !", "Erro de Formulário", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
@@ -160,7 +158,6 @@ namespace Assistencia_Técnica
             labelTel1.ForeColor = Color.Black;
             labelTel2.ForeColor = Color.Black;
         }
-
         private bool FormsOk()
         {
 
@@ -255,96 +252,6 @@ namespace Assistencia_Técnica
             return (FormFaltando) ? false : true;
 
         }
-
-        public Endereco obterEndereco(string endereco)
-        {
-
-            Endereco end = new Endereco();
-            int posChar = 0;
-
-
-            for (int i = 0; i < endereco.Length; i++) //obtendo rua/avenida
-            {
-                if (endereco[i] == '-')
-                {
-                    posChar = i;
-                    break;
-
-                }
-                else
-                    end.Logradouro += endereco[i];
-
-            }
-
-            for (int i = posChar + 9; i < endereco.Length; i++) //obtendo numero
-            {
-                if (endereco[i] == '\n')
-                {
-                    posChar = i;
-                    break;
-                }
-                else if (endereco[i] != '\r')
-                    end.Numero += endereco[i];
-            }
-
-            for (int i = posChar + 8; i < endereco.Length; i++) //obtendo bairro
-            {
-                if (endereco[i] == '-')
-                {
-                    posChar = i;
-                    break;
-                }
-                else
-                    end.Bairro += endereco[i];
-
-            }
-            for (int i = posChar + 2; i < endereco.Length; i++)
-            {
-                if (endereco[i] == '/')
-                {
-                    posChar = i;
-                    break;
-                }
-                else
-                    end.Cidade += endereco[i];
-
-            }
-
-            for (int i = posChar + 1; i < endereco.Length; i++)
-            {
-                end.Estado += endereco[i];
-
-            }
-
-            return end;
-        }
-
-        public Contato obterContato(string contato)
-        {
-            Contato contatoCliente = new Contato();
-            int posChar = 0;
-
-            for (int i = 0; i < contato.Length; i++)
-            {
-                if (contato[i] == '\n')
-                {
-                    posChar = i;
-                    break;
-                }
-                else
-                    contatoCliente.Contato1 += contato[i];
-
-            }
-
-            for (int i = posChar + 1; i < contato.Length; i++)
-            {
-                contatoCliente.Contato2 += contato[i];
-
-            }
-
-            return contatoCliente;
-        }
-
         private void nomeCliente_TextChanged(object sender, EventArgs e)
         {
             if (labelNome.ForeColor == Color.Red)

@@ -56,9 +56,8 @@ namespace Assistencia_Técnica
                 tblCli.Columns.Add("ID_End",typeof(int));
                 tblCli.Columns.Add("ID_Cont",typeof(int));
                 
-                tblCli.Columns[4].DataType = typeof(string);
-                tblCli.Columns[5].DataType = typeof(string);
-
+                tblCli.Columns[4].DataType = tblCli.Columns[5].DataType = typeof(string);
+                 
                 //Importando as informações
                 foreach (DataRow linha in tblCliSql.Rows)
                 {
@@ -92,7 +91,59 @@ namespace Assistencia_Técnica
               
 
         }
+        public void mostrarFuncionarios(string cmd,DataGridView dgCli)
+        {
 
+            try
+            {
+                
+                MySqlCommand cmdCli = new MySqlCommand(cmd, conexao);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmdCli);
+                DataTable tblCliSql = new DataTable();
+
+                //preenchendo a primeira tabela de clientes e adicionando ao DataGrid
+                adp.Fill(tblCliSql);
+
+                //clonando a tabela de IDs e mudando o tipo de dados de Endereço e Contato
+                DataTable tblCli = tblCliSql.Clone();
+                tblCli.Columns.Add("ID_End",typeof(int));
+                tblCli.Columns.Add("ID_Cont",typeof(int));
+                
+                tblCli.Columns[5].DataType = tblCli.Columns[6].DataType = typeof(string);
+                 
+                //Importando as informações
+                foreach (DataRow linha in tblCliSql.Rows)
+                {
+                    tblCli.ImportRow(linha);
+
+                }
+
+                //obtendo os endereços do banco a partir do ID e atualizando
+                foreach (DataRow linha in tblCli.Rows)
+                {
+                    int ID_Endereco = Convert.ToInt32((string)linha["ID_Endereco"]);
+                    int ID_Contato = Convert.ToInt32((string)linha["ID_Contato"]);
+
+                    linha[7] = ID_Endereco;
+                    linha[8] = ID_Contato;
+                    linha[6] = obterEndereco(ID_Endereco);
+                    linha[5] = obterContato(ID_Contato);
+
+                }
+                            
+                dgCli.DataSource = tblCli;
+
+                //Coloca os botoes na posiçao adequada
+                dgCli.Columns["Editar"].DisplayIndex = 10;
+                dgCli.Columns["Excluir"].DisplayIndex = 10;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados: " + ex);
+            }
+              
+
+        }
         public bool ChecarLogin(string user,string userSenha)
         {
             MySqlDataReader leitor = null;
@@ -121,7 +172,6 @@ namespace Assistencia_Técnica
             leitor.Close();
             return false;
         }
-
         public string ObterUsuario(string user, string userSenha)
         {
             string usuario = null;
@@ -146,7 +196,6 @@ namespace Assistencia_Técnica
 
             return usuario;
         }
-
         public string obterEndereco(int ID_Endereco)
         {
 
@@ -188,7 +237,6 @@ namespace Assistencia_Técnica
 
             return null;
         }
-
         public string obterContato(int ID_Contato)
         {
 
@@ -221,13 +269,13 @@ namespace Assistencia_Técnica
         }
 
         //Operações de INSERT
-        public void addCliente(Pessoa cliente,Endereco enderecoCliente,Contato contatoCliente)
+        public void addCliente(Pessoa cliente,Endereco endereco,Contato contato)
         {          
 
             try
             {
-                int ID_Endereco_Cliente = addEndereco(enderecoCliente);
-                int ID_Contato_Cliente = addContato(contatoCliente);
+                int ID_Endereco_Cliente = addEndereco(endereco);
+                int ID_Contato_Cliente = addContato(contato);
                         
             string cmd = "INSERT INTO cliente (Nome,RG,CPF,ID_Contato,ID_Endereco) " +
                     " values (@nome,@rg,@cpf,@contato,@endereco)";
@@ -242,7 +290,7 @@ namespace Assistencia_Técnica
 
                 comando.ExecuteNonQuery();
 
-                MessageBox.Show("Adicionado com sucesso !");
+                MessageBox.Show("Adicionado com sucesso !","Novo Cliente",MessageBoxButtons.OK,MessageBoxIcon.Information);
 
             }
             catch (MySqlException ex)
@@ -253,7 +301,38 @@ namespace Assistencia_Técnica
                     
 
         }
+        public void addFuncionario(Funcionario funcionario, Endereco endereco, Contato contato)
+        {
+            try
+            {
+                int ID_Endereco_Cliente = addEndereco(endereco);
+                int ID_Contato_Cliente = addContato(contato);
 
+                string cmd = "INSERT INTO funcionario (Nome,Função,RG,CPF,ID_Contato,ID_Endereco) " +
+                        " values (@nome,@funcao,@rg,@cpf,@contato,@endereco)";
+
+                MySqlCommand comando = new MySqlCommand(cmd, conexao);
+
+                comando.Parameters.AddWithValue("@nome", funcionario.Nome);
+                comando.Parameters.AddWithValue("@funcao", funcionario.Funcao);
+                comando.Parameters.AddWithValue("@rg", funcionario.RG);
+                comando.Parameters.AddWithValue("@cpf", funcionario.CPF);
+                comando.Parameters.AddWithValue("@contato", ID_Contato_Cliente);
+                comando.Parameters.AddWithValue("@endereco", ID_Endereco_Cliente);
+
+                comando.ExecuteNonQuery();
+
+                MessageBox.Show("Adicionado com sucesso !","Novo Funcionário",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados : " + ex.Message);
+
+            }
+
+
+        }
         private int addEndereco(Endereco endereco)
         {
          
@@ -287,7 +366,6 @@ namespace Assistencia_Técnica
                      
             return -1;
         }
-
         private int addContato(Contato contato)
         {
 
@@ -318,13 +396,12 @@ namespace Assistencia_Técnica
         }
 
         //Operações de Edição
-
-        public void attCliente(int ID,int ID_End,int ID_Cont,Pessoa cliente, Endereco enderecoCliente, Contato contatoCliente)
+        public void attCliente(int ID,int ID_End,int ID_Cont,Pessoa cliente, Endereco endereco, Contato contato)
         {
             try
             {
-                 attEndereco(ID_End,enderecoCliente);
-                 attContato(ID_Cont,contatoCliente);
+                 attEndereco(ID_End,endereco);
+                 attContato(ID_Cont,contato);
 
                 string cmd = "UPDATE cliente SET Nome = @nome,RG = @rg,CPF = @cpf" +
                         " WHERE ID_Cliente="+ID;
@@ -338,6 +415,35 @@ namespace Assistencia_Técnica
                 comando.ExecuteNonQuery();
 
                 MessageBox.Show("Cliente Atualizado com sucesso !", "Edição de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados (Cliente): " + ex.Message);
+
+            }
+
+        }  
+        public void attFuncionario(int ID,int ID_End,int ID_Cont,Funcionario funcionario, Endereco endereco, Contato contato)
+        {
+            try
+            {
+                 attEndereco(ID_End,endereco);
+                 attContato(ID_Cont,contato);
+
+                string cmd = "UPDATE funcionario SET Nome = @nome,Função = @funcao,RG = @rg,CPF = @cpf" +
+                        " WHERE ID_Funcionario="+ID;
+
+                MySqlCommand comando = new MySqlCommand(cmd, conexao);
+ 
+                comando.Parameters.AddWithValue("@nome", funcionario.Nome);
+                comando.Parameters.AddWithValue("@funcao", funcionario.Funcao);
+                comando.Parameters.AddWithValue("@rg", funcionario.RG);
+                comando.Parameters.AddWithValue("@cpf", funcionario.CPF);
+              
+                comando.ExecuteNonQuery();
+
+                MessageBox.Show("Funcionario Atualizado com sucesso !", "Edição de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (MySqlException ex)
@@ -420,7 +526,30 @@ namespace Assistencia_Técnica
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Erro de banco de dados (Contato): " + ex.Message);
+                MessageBox.Show("Erro de banco de dados (Cliente): " + ex.Message);
+
+            }
+        }
+
+        public void excluirFuncionario(DataGridViewRow dadosFuncionario)
+        {
+            try
+            {
+                excluirEndereco(Convert.ToInt32(dadosFuncionario.Cells["ID_End"].Value.ToString()));
+                excluirContato(Convert.ToInt32(dadosFuncionario.Cells["ID_Cont"].Value.ToString()));
+
+                int ID = Convert.ToInt32(dadosFuncionario.Cells["ID"].Value.ToString());
+
+                string cmd = "DELETE FROM funcionario WHERE ID_Funcionario=" + ID;
+                MySqlCommand comando = new MySqlCommand(cmd, conexao);
+                comando.ExecuteNonQuery();
+
+                MessageBox.Show("Funcionário excluído com sucesso !", "Remoção de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados (Funcionário): " + ex.Message);
 
             }
         }
@@ -436,7 +565,7 @@ namespace Assistencia_Técnica
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Erro de banco de dados (Contato): " + ex.Message);
+                MessageBox.Show("Erro de banco de dados (Endereço): " + ex.Message);
 
             }
         }

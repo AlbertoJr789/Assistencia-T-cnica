@@ -80,7 +80,7 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel1.Controls.Add(this.tableLayoutPanel1);
@@ -139,7 +139,7 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel2.Controls.Add(this.sair);
@@ -153,6 +153,7 @@
             // 
             this.sair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.sair.AutoSize = true;
+            this.sair.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sair.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
             this.sair.Location = new System.Drawing.Point(918, 11);
             this.sair.Name = "sair";
@@ -167,7 +168,7 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tableLayoutPanel2.ColumnCount = 4;
@@ -188,7 +189,7 @@
             // 
             // CadServico
             // 
-            this.CadServico.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.CadServico.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CadServico.BackColor = System.Drawing.SystemColors.Highlight;
             this.CadServico.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -200,10 +201,11 @@
             this.CadServico.TabIndex = 3;
             this.CadServico.Text = "Gerenciar Serviços";
             this.CadServico.UseVisualStyleBackColor = false;
+            this.CadServico.Click += new System.EventHandler(this.CadServico_Click);
             // 
             // CadProduto
             // 
-            this.CadProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.CadProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CadProduto.BackColor = System.Drawing.SystemColors.Highlight;
             this.CadProduto.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -218,7 +220,7 @@
             // 
             // CadFuncionario
             // 
-            this.CadFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.CadFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CadFuncionario.BackColor = System.Drawing.SystemColors.Highlight;
             this.CadFuncionario.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -234,7 +236,7 @@
             // 
             // CadCliente
             // 
-            this.CadCliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.CadCliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CadCliente.BackColor = System.Drawing.SystemColors.Highlight;
             this.CadCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -251,8 +253,8 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel3.BackColor = System.Drawing.Color.DodgerBlue;
             this.tableLayoutPanel3.ColumnCount = 1;
@@ -267,8 +269,8 @@
             // 
             // ordemServico
             // 
-            this.ordemServico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.ordemServico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ordemServico.BackColor = System.Drawing.Color.SteelBlue;
             this.ordemServico.Cursor = System.Windows.Forms.Cursors.Hand;
