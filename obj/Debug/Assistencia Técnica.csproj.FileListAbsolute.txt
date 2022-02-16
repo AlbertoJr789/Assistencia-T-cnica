@@ -1,0 +1,15 @@
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia Técnica.csproj.SuggestedBindingRedirects.cache
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia Técnica.csproj.GenerateResource.cache
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia Técnica.csproj.CoreCompileInputs.cache
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia Técnica.csproj.CopyComplete
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia Técnica.csproj.AssemblyReference.cache
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormGerenClientes.resources
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.LoginForm.resources
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.MenuAssistencia.resources
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.CadastroCliente.resources
+C:\Users\jr_jo\Desktop\saida vs\Assistencia_Técnica.exe.config
+C:\Users\jr_jo\Desktop\saida vs\Assistencia_Técnica.exe
+C:\Users\jr_jo\Desktop\saida vs\Assistencia_Técnica.pdb
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.Properties.Resources.resources
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.exe
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.pdb
