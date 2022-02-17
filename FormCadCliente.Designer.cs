@@ -625,6 +625,7 @@
             this.ClientSize = new System.Drawing.Size(1191, 810);
             this.Controls.Add(this.splitContainer1);
             this.Name = "CadastroCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

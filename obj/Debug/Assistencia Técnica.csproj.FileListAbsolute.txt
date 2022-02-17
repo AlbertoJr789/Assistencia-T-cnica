@@ -14,4 +14,8 @@ D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.Properties
 D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.exe
 D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.pdb
 D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormGerenFuncionarios.resources
-D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormCadFuncionario.resources
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormCadProdutos.resources
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormGerenProdutos.resources
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormCadFuncionarios.resources
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormCadServicos.resources
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormGerenServicos.resources

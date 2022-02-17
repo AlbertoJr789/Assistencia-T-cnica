@@ -91,35 +91,33 @@ namespace Assistencia_Técnica
               
 
         }
-        public void mostrarFuncionarios(string cmd,DataGridView dgCli)
+        public void mostrarFuncionarios(string cmd,DataGridView dgFun)
         {
-
             try
-            {
-                
-                MySqlCommand cmdCli = new MySqlCommand(cmd, conexao);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmdCli);
-                DataTable tblCliSql = new DataTable();
+            {                
+                MySqlCommand cmdFun = new MySqlCommand(cmd, conexao);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmdFun);
+                DataTable tblFunSql = new DataTable();
 
-                //preenchendo a primeira tabela de clientes e adicionando ao DataGrid
-                adp.Fill(tblCliSql);
+                //preenchendo a primeira tabela de funcionario e adicionando ao DataGrid
+                adp.Fill(tblFunSql);
 
                 //clonando a tabela de IDs e mudando o tipo de dados de Endereço e Contato
-                DataTable tblCli = tblCliSql.Clone();
-                tblCli.Columns.Add("ID_End",typeof(int));
-                tblCli.Columns.Add("ID_Cont",typeof(int));
-                
-                tblCli.Columns[5].DataType = tblCli.Columns[6].DataType = typeof(string);
+                DataTable tblFun = tblFunSql.Clone();
+                tblFun.Columns.Add("ID_End",typeof(int));
+                tblFun.Columns.Add("ID_Cont",typeof(int));
+
+                tblFun.Columns[5].DataType = tblFun.Columns[6].DataType = typeof(string);
                  
                 //Importando as informações
-                foreach (DataRow linha in tblCliSql.Rows)
+                foreach (DataRow linha in tblFunSql.Rows)
                 {
-                    tblCli.ImportRow(linha);
+                    tblFun.ImportRow(linha);
 
                 }
 
                 //obtendo os endereços do banco a partir do ID e atualizando
-                foreach (DataRow linha in tblCli.Rows)
+                foreach (DataRow linha in tblFun.Rows)
                 {
                     int ID_Endereco = Convert.ToInt32((string)linha["ID_Endereco"]);
                     int ID_Contato = Convert.ToInt32((string)linha["ID_Contato"]);
@@ -130,18 +128,58 @@ namespace Assistencia_Técnica
                     linha[5] = obterContato(ID_Contato);
 
                 }
-                            
-                dgCli.DataSource = tblCli;
+
+                dgFun.DataSource = tblFun;
 
                 //Coloca os botoes na posiçao adequada
-                dgCli.Columns["Editar"].DisplayIndex = 10;
-                dgCli.Columns["Excluir"].DisplayIndex = 10;
+                dgFun.Columns["Editar"].DisplayIndex = 10;
+                dgFun.Columns["Excluir"].DisplayIndex = 10;
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show("Erro de banco de dados: " + ex);
             }
               
+
+        }
+        public void mostrarProdutos(string cmd, DataGridView dgProd)
+        {
+            try
+            {
+                MySqlCommand cmdProd = new MySqlCommand(cmd, conexao);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmdProd);
+                DataTable tblProdSql = new DataTable();
+
+                //preenchendo a primeira tabela de clientes e adicionando ao DataGrid
+                adp.Fill(tblProdSql);
+                dgProd.DataSource = tblProdSql;
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados: " + ex);
+            }
+
+
+        }
+        public void mostrarServicos(string cmd, DataGridView dgServ)
+        {
+            try
+            {
+                MySqlCommand cmdServ = new MySqlCommand(cmd, conexao);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmdServ);
+                DataTable tblServSql = new DataTable();
+
+                //preenchendo a primeira tabela de clientes e adicionando ao DataGrid
+                adp.Fill(tblServSql);
+                dgServ.DataSource = tblServSql;
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados: " + ex);
+            }
+
 
         }
         public bool ChecarLogin(string user,string userSenha)
@@ -333,6 +371,53 @@ namespace Assistencia_Técnica
 
 
         }
+        public void addProduto(Produto produto)
+        {
+            try
+            {
+                string cmd = "INSERT INTO produto (Nome,Preco,Estoque) VALUES (@nome,@preco,@estoque)";
+                       
+                MySqlCommand comando = new MySqlCommand(cmd, conexao);
+
+                comando.Parameters.AddWithValue("@nome", produto.Descricao);
+                comando.Parameters.AddWithValue("@preco", produto.Preco);
+                comando.Parameters.AddWithValue("@Estoque", produto.Estoque);
+
+                comando.ExecuteNonQuery();
+
+                MessageBox.Show("Adicionado com sucesso !", "Novo Produto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados (Produto): " + ex.Message);
+
+            }
+
+        }
+        public void addServico(Servico servico)
+        {
+            try
+            {
+                string cmd = "INSERT INTO servico (Nome,Preco) VALUES (@nome,@preco)";
+
+                MySqlCommand comando = new MySqlCommand(cmd, conexao);
+
+                comando.Parameters.AddWithValue("@nome", servico.Descricao);
+                comando.Parameters.AddWithValue("@preco", servico.Preco);
+                
+                comando.ExecuteNonQuery();
+
+                MessageBox.Show("Adicionado com sucesso !", "Novo Serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados (Serviço): " + ex.Message);
+
+            }
+
+        }
         private int addEndereco(Endereco endereco)
         {
          
@@ -448,7 +533,57 @@ namespace Assistencia_Técnica
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Erro de banco de dados (Cliente): " + ex.Message);
+                MessageBox.Show("Erro de banco de dados (Funcionário): " + ex.Message);
+
+            }
+
+        }
+        public void attProduto(int ID,Produto produto)
+        {
+            try
+            {            
+                string cmd = "UPDATE produto SET Nome = @nome,Preco = @preco,Estoque = @estoque" +
+                        " WHERE ID_Produto=" + ID;
+
+                MySqlCommand comando = new MySqlCommand(cmd, conexao);
+                 
+                comando.Parameters.AddWithValue("@nome", produto.Descricao);
+                comando.Parameters.AddWithValue("@preco", produto.Preco);
+                comando.Parameters.AddWithValue("@Estoque", produto.Estoque);
+     
+
+                comando.ExecuteNonQuery();
+
+                MessageBox.Show("Produto Atualizado com sucesso !", "Edição de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados (Produto): " + ex.Message);
+
+            }
+
+        }
+        public void attServico(int ID, Servico servico)
+        {
+            try
+            {
+                string cmd = "UPDATE servico SET Nome = @nome,Preco = @preco" +
+                        " WHERE ID_Servico=" + ID;
+
+                MySqlCommand comando = new MySqlCommand(cmd, conexao);
+
+                comando.Parameters.AddWithValue("@nome", servico.Descricao);
+                comando.Parameters.AddWithValue("@preco", servico.Preco);
+                
+                comando.ExecuteNonQuery();
+
+                MessageBox.Show("Serviço Atualizado com sucesso !", "Edição de Serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados (Serviço): " + ex.Message);
 
             }
 
@@ -530,7 +665,6 @@ namespace Assistencia_Técnica
 
             }
         }
-
         public void excluirFuncionario(DataGridViewRow dadosFuncionario)
         {
             try
@@ -553,6 +687,46 @@ namespace Assistencia_Técnica
 
             }
         }
+        public void excluirProduto(DataGridViewRow dadosProduto)
+        {
+            try
+            {               
+
+                int ID = Convert.ToInt32(dadosProduto.Cells["ID"].Value.ToString());
+
+                string cmd = "DELETE FROM produto WHERE ID_Produto=" + ID;
+                MySqlCommand comando = new MySqlCommand(cmd, conexao);
+                comando.ExecuteNonQuery();
+
+                MessageBox.Show("Produto excluído com sucesso !", "Remoção de Produto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados (Produto): " + ex.Message);
+
+            }
+        }
+        public void excluirServico(DataGridViewRow dadosServico)
+        {
+            try
+            {
+                int ID = Convert.ToInt32(dadosServico.Cells["ID"].Value.ToString());
+
+                string cmd = "DELETE FROM servico WHERE ID_Servico=" + ID;
+                MySqlCommand comando = new MySqlCommand(cmd, conexao);
+                comando.ExecuteNonQuery();
+
+                MessageBox.Show("Produto excluído com sucesso !", "Remoção de Produto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados (Produto): " + ex.Message);
+
+            }
+        }
+
         public void excluirEndereco(int ID)
         {
             try

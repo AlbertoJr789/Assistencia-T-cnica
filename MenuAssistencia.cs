@@ -70,7 +70,14 @@ namespace Assistencia_Técnica
 
         private void CadServico_Click(object sender, EventArgs e)
         {
+            FormGerenServicos menuServicos = new FormGerenServicos();
+            menuServicos.ShowDialog();
+        }
 
+        private void CadProduto_Click(object sender, EventArgs e)
+        {
+            FormGerenProdutos menuProdutos = new FormGerenProdutos();
+            menuProdutos.ShowDialog();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Assistencia_Técnica
 
         private void botaoCadastro_Click_1(object sender, EventArgs e)
         {
-            FormCadFuncionario cadastroFuncionario = new FormCadFuncionario(false, null);
+            FormCadFuncionarios cadastroFuncionario = new FormCadFuncionarios(false, null);
             cadastroFuncionario.ShowDialog();
         }
 
@@ -80,7 +80,7 @@ namespace Assistencia_Técnica
                 {//clicou no botao de editar
 
                     DataGridViewRow linhaFuncionario = dataGridFuncionarios.Rows[e.RowIndex];
-                    FormCadFuncionario editarCad = new FormCadFuncionario(true, linhaFuncionario);
+                    FormCadFuncionarios editarCad = new FormCadFuncionarios(true, linhaFuncionario);
                     editarCad.ShowDialog();
                     MostrarFuncionarios("SELECT * FROM funcionario");
                 }

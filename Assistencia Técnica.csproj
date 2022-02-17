@@ -114,11 +114,23 @@
     <Compile Include="FormCadCliente.Designer.cs">
       <DependentUpon>FormCadCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCadFuncionario.cs">
+    <Compile Include="FormCadFuncionarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCadFuncionario.Designer.cs">
-      <DependentUpon>FormCadFuncionario.cs</DependentUpon>
+    <Compile Include="FormCadFuncionarios.Designer.cs">
+      <DependentUpon>FormCadFuncionarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCadServicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCadServicos.Designer.cs">
+      <DependentUpon>FormCadServicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGerenProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGerenProdutos.Designer.cs">
+      <DependentUpon>FormGerenProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="FormGerenClientes.cs">
       <SubType>Form</SubType>
@@ -131,6 +143,18 @@
     </Compile>
     <Compile Include="FormGerenFuncionarios.Designer.cs">
       <DependentUpon>FormGerenFuncionarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCadProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCadProdutos.Designer.cs">
+      <DependentUpon>FormCadProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGerenServicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGerenServicos.Designer.cs">
+      <DependentUpon>FormGerenServicos.cs</DependentUpon>
     </Compile>
     <Compile Include="Funcionario.cs" />
     <Compile Include="MenuAssistencia.cs">
@@ -147,19 +171,33 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Pessoa.cs" />
+    <Compile Include="Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servico.cs" />
     <EmbeddedResource Include="FormCadCliente.resx">
       <DependentUpon>FormCadCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCadFuncionario.resx">
-      <DependentUpon>FormCadFuncionario.cs</DependentUpon>
+    <EmbeddedResource Include="FormCadFuncionarios.resx">
+      <DependentUpon>FormCadFuncionarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCadServicos.resx">
+      <DependentUpon>FormCadServicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGerenProdutos.resx">
+      <DependentUpon>FormGerenProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGerenClientes.resx">
       <DependentUpon>FormGerenClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGerenFuncionarios.resx">
       <DependentUpon>FormGerenFuncionarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCadProdutos.resx">
+      <DependentUpon>FormCadProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGerenServicos.resx">
+      <DependentUpon>FormGerenServicos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

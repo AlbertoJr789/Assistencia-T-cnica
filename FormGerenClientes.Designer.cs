@@ -31,37 +31,69 @@ namespace Assistencia_Técnica
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGerenClientes));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.refresh = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBusca = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.botaoCadastro = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridClientes = new System.Windows.Forms.DataGridView();
-            this.Excluir = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ID_Cont = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Contato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Endereço = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.refresh = new System.Windows.Forms.PictureBox();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Endereço = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_Cont = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Excluir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
+            this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Location = new System.Drawing.Point(975, 66);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(42, 20);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Iniciar Pesquisa");
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // refresh
+            // 
+            this.refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.refresh.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.refresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("refresh.BackgroundImage")));
+            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.refresh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refresh.Location = new System.Drawing.Point(1017, 66);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(42, 20);
+            this.refresh.TabIndex = 5;
+            this.refresh.TabStop = false;
+            this.toolTip1.SetToolTip(this.refresh, "Atualizar Tabela");
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
             // 
             // label1
             // 
@@ -95,22 +127,6 @@ namespace Assistencia_Técnica
             this.textBusca.Text = "Digite o nome aqui para buscar...";
             this.textBusca.Click += new System.EventHandler(this.textBusca_Click);
             this.textBusca.Leave += new System.EventHandler(this.textBusca_Leave);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(975, 66);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(42, 20);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox1, "Iniciar Pesquisa");
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // botaoCadastro
             // 
@@ -172,22 +188,73 @@ namespace Assistencia_Técnica
             this.dataGridClientes.TabIndex = 0;
             this.dataGridClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridClientes_CellClick);
             // 
-            // Excluir
+            // ID
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.Excluir.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Excluir.FillWeight = 62.43589F;
-            this.Excluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Excluir.HeaderText = "";
-            this.Excluir.Name = "Excluir";
-            this.Excluir.ReadOnly = true;
-            this.Excluir.Text = "Excluir";
-            this.Excluir.UseColumnTextForButtonValue = true;
+            this.ID.DataPropertyName = "ID_Cliente";
+            this.ID.FillWeight = 51.90735F;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Nome
+            // 
+            this.Nome.DataPropertyName = "Nome";
+            this.Nome.FillWeight = 181.944F;
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            // 
+            // RG
+            // 
+            this.RG.DataPropertyName = "RG";
+            this.RG.FillWeight = 113.4989F;
+            this.RG.HeaderText = "R.G";
+            this.RG.Name = "RG";
+            this.RG.ReadOnly = true;
+            // 
+            // CPF
+            // 
+            this.CPF.DataPropertyName = "CPF";
+            this.CPF.FillWeight = 122.1848F;
+            this.CPF.HeaderText = "CPF";
+            this.CPF.Name = "CPF";
+            this.CPF.ReadOnly = true;
+            // 
+            // Endereço
+            // 
+            this.Endereço.DataPropertyName = "ID_Endereco";
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Endereço.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Endereço.FillWeight = 111.7963F;
+            this.Endereço.HeaderText = "Endereço";
+            this.Endereço.Name = "Endereço";
+            this.Endereço.ReadOnly = true;
+            // 
+            // Contato
+            // 
+            this.Contato.DataPropertyName = "ID_Contato";
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Contato.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Contato.FillWeight = 111.7963F;
+            this.Contato.HeaderText = "Contato";
+            this.Contato.Name = "Contato";
+            this.Contato.ReadOnly = true;
+            // 
+            // ID_End
+            // 
+            this.ID_End.DataPropertyName = "ID_End";
+            this.ID_End.HeaderText = "";
+            this.ID_End.Name = "ID_End";
+            this.ID_End.ReadOnly = true;
+            this.ID_End.Visible = false;
+            // 
+            // ID_Cont
+            // 
+            this.ID_Cont.DataPropertyName = "ID_Cont";
+            this.ID_Cont.HeaderText = "";
+            this.ID_Cont.Name = "ID_Cont";
+            this.ID_Cont.ReadOnly = true;
+            this.ID_Cont.Visible = false;
             // 
             // Editar
             // 
@@ -206,89 +273,22 @@ namespace Assistencia_Técnica
             this.Editar.Text = "Editar";
             this.Editar.UseColumnTextForButtonValue = true;
             // 
-            // ID_Cont
+            // Excluir
             // 
-            this.ID_Cont.DataPropertyName = "ID_Cont";
-            this.ID_Cont.HeaderText = "";
-            this.ID_Cont.Name = "ID_Cont";
-            this.ID_Cont.ReadOnly = true;
-            this.ID_Cont.Visible = false;
-            // 
-            // ID_End
-            // 
-            this.ID_End.DataPropertyName = "ID_End";
-            this.ID_End.HeaderText = "";
-            this.ID_End.Name = "ID_End";
-            this.ID_End.ReadOnly = true;
-            this.ID_End.Visible = false;
-            // 
-            // Contato
-            // 
-            this.Contato.DataPropertyName = "ID_Contato";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Contato.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Contato.FillWeight = 111.7963F;
-            this.Contato.HeaderText = "Contato";
-            this.Contato.Name = "Contato";
-            this.Contato.ReadOnly = true;
-            // 
-            // Endereço
-            // 
-            this.Endereço.DataPropertyName = "ID_Endereco";
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Endereço.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Endereço.FillWeight = 111.7963F;
-            this.Endereço.HeaderText = "Endereço";
-            this.Endereço.Name = "Endereço";
-            this.Endereço.ReadOnly = true;
-            // 
-            // CPF
-            // 
-            this.CPF.DataPropertyName = "CPF";
-            this.CPF.FillWeight = 122.1848F;
-            this.CPF.HeaderText = "CPF";
-            this.CPF.Name = "CPF";
-            this.CPF.ReadOnly = true;
-            // 
-            // RG
-            // 
-            this.RG.DataPropertyName = "RG";
-            this.RG.FillWeight = 113.4989F;
-            this.RG.HeaderText = "R.G";
-            this.RG.Name = "RG";
-            this.RG.ReadOnly = true;
-            // 
-            // Nome
-            // 
-            this.Nome.DataPropertyName = "Nome";
-            this.Nome.FillWeight = 181.944F;
-            this.Nome.HeaderText = "Nome";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID_Cliente";
-            this.ID.FillWeight = 51.90735F;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // refresh
-            // 
-            this.refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.refresh.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.refresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("refresh.BackgroundImage")));
-            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.refresh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.refresh.Location = new System.Drawing.Point(1017, 66);
-            this.refresh.Name = "refresh";
-            this.refresh.Size = new System.Drawing.Size(42, 20);
-            this.refresh.TabIndex = 5;
-            this.refresh.TabStop = false;
-            this.toolTip1.SetToolTip(this.refresh, "Atualizar Tabela");
-            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.Excluir.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Excluir.FillWeight = 62.43589F;
+            this.Excluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Excluir.HeaderText = "";
+            this.Excluir.Name = "Excluir";
+            this.Excluir.ReadOnly = true;
+            this.Excluir.Text = "Excluir";
+            this.Excluir.UseColumnTextForButtonValue = true;
             // 
             // panel2
             // 
@@ -315,14 +315,15 @@ namespace Assistencia_Técnica
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FormGerenClientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gerenciamento de Clientes";
             this.Load += new System.EventHandler(this.FormGerenClientes_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);

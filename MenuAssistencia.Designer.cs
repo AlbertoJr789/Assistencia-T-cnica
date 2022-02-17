@@ -217,6 +217,7 @@
             this.CadProduto.TabIndex = 2;
             this.CadProduto.Text = "Gerenciar Produtos";
             this.CadProduto.UseVisualStyleBackColor = false;
+            this.CadProduto.Click += new System.EventHandler(this.CadProduto_Click);
             // 
             // CadFuncionario
             // 
@@ -294,6 +295,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "MenuAssistencia";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Principal";
             this.Load += new System.EventHandler(this.MenuAssistencia_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
