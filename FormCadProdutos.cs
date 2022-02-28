@@ -12,35 +12,71 @@ namespace Assistencia_Técnica
 {
     public partial class FormCadProdutos : Form
     {
-
         private int ID = -1;
-        private bool Edicao = false;
+        private bool Edicao = false, EdicaoOS = false;
+        private FormCadNota edOS = null;
+        private DataGridViewRow dgProd = null;
         private Produto produto = new Produto();
 
-        public FormCadProdutos(bool Edicao,DataGridViewRow dgProd) 
+        public FormCadProdutos(bool Edicao,DataGridViewRow dgProd,bool EdicaoOS,FormCadNota edOS) 
         {
             InitializeComponent();
 
             if (Edicao) //significa que é um formulário de edição de produtos
             { // logo, os dados antigos serão coletados e exibidos
-
-                label1.Text = "Atualização de Produto";
-                botaoAdd.Text = "Atualizar Dados";
-
+                             
                 this.Edicao = true;
                 this.ID = Convert.ToInt32(dgProd.Cells["ID"].Value.ToString());
-                descricao.Text = dgProd.Cells["Descrição"].Value.ToString();
-                preco.Text = dgProd.Cells["Preco"].Value.ToString();
-                estoque.Value = Convert.ToDecimal(dgProd.Cells["Estoque"].Value.ToString());              
+                this.dgProd = dgProd;       
+            }
+            if (EdicaoOS)
+            {
+                this.EdicaoOS = true;
+                this.edOS = edOS;
+                this.ID = Convert.ToInt32(dgProd.Cells["ID"].Value.ToString());
+                this.dgProd = dgProd;
+                
             }
 
         }
+
+        private void FormCadProdutos_Load(object sender, EventArgs e)
+        {
+            if (Edicao)
+            {
+                label1.Text = "Atualização de Produto";
+                botaoAdd.Text = "Atualizar Dados";
+                descricao.Text = dgProd.Cells["Descrição"].Value.ToString();
+                preco.Text = dgProd.Cells["Preco"].Value.ToString();
+                estoque.Value = Convert.ToDecimal(dgProd.Cells["Estoque"].Value.ToString());
+
+            }
+            if (EdicaoOS)
+            {
+                label1.Text = "Atualização de Produto";
+                botaoAdd.Text = "Atualizar Dados";
+                
+                descricao.Text = dgProd.Cells["Descricao"].Value.ToString();
+                descricao.BackColor = Color.LightGray;
+                descricao.ReadOnly = true;
+
+                preco.Text = dgProd.Cells["Preco"].Value.ToString();
+                
+                labelEstoque.Text = "Quantidade *";
+                estoque.Value = Convert.ToDecimal(dgProd.Cells["Quantidade"].Value.ToString());
+                estoque.Maximum = Convert.ToDecimal(dgProd.Cells["Estoque"].Value.ToString());
+            }
+
+        }
+
         private void LimparForm()
         {
             //esvaziando o form
-            descricao.Clear();
+            if(!EdicaoOS)
+                descricao.Clear();
+            
             preco.Clear();
-            estoque.Value = 0;
+            estoque.Value = 1;
 
             //repintando os labels
             labelDescricao.ForeColor = Color.Black;
@@ -68,7 +104,7 @@ namespace Assistencia_Técnica
                 FormFaltando = true;
 
             }
-                                   
+                    
 
             return (FormFaltando) ? false : true;
 
@@ -82,25 +118,33 @@ namespace Assistencia_Técnica
                 MySqlConexao produtoDB = new MySqlConexao();
 
                 produto.Descricao = descricao.Text;
-                produto.Preco = Convert.ToDecimal(preco.Text);
-                produto.Estoque = (int)estoque.Value;
-
+                produto.Preco = Convert.ToDecimal(preco.Text.Replace("R$ ",""));
+                if (!EdicaoOS)
+                    produto.Estoque = (int)estoque.Value;
+                else
+                    produto.Quantidade = (int)estoque.Value;
 
                 if (this.Edicao)
+                {
                     produtoDB.attProduto(this.ID, produto);
+                    Close();
+                }
+                else if (this.EdicaoOS)
+                {
+                    edOS.attProduto(this.ID, produto); 
+                    Close();
+                }
                 else
                     produtoDB.addProduto(produto);
 
                 LimparForm();
 
-
             }
             else
-                if (this.Edicao)
+                if (this.Edicao || this.EdicaoOS)
                 MessageBox.Show("Erro ao atualizar produto !\nVerifique se algum campo não foi devidamente preenchido !", "Erro de Formulário", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
                 MessageBox.Show("Erro ao adicionar produto !\nVerifique se algum campo não foi devidamente preenchido !", "Erro de Formulário", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
 
         }
 
@@ -135,7 +179,6 @@ namespace Assistencia_Técnica
 
         private void preco_KeyPress(object sender, KeyPressEventArgs e)
         {
-
             if (!Char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
             {
                 if (e.KeyChar == ',')
@@ -183,5 +226,7 @@ namespace Assistencia_Técnica
             preco.Select(preco.Text.Length, 0);
 
         }
+
+      
     }
 }

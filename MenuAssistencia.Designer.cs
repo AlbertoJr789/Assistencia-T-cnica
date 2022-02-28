@@ -46,13 +46,18 @@
             this.CadFuncionario = new System.Windows.Forms.Button();
             this.CadCliente = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.ordemServico = new System.Windows.Forms.Button();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.notaServico = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -60,7 +65,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(-8, 177);
+            this.pictureBox1.Location = new System.Drawing.Point(-8, 160);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(351, 322);
             this.pictureBox1.TabIndex = 0;
@@ -90,7 +95,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(0, 133);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(334, 524);
+            this.panel1.Size = new System.Drawing.Size(334, 507);
             this.panel1.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -146,7 +151,7 @@
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Location = new System.Drawing.Point(-2, -2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(996, 139);
+            this.panel2.Size = new System.Drawing.Size(929, 139);
             this.panel2.TabIndex = 3;
             // 
             // sair
@@ -155,7 +160,7 @@
             this.sair.AutoSize = true;
             this.sair.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sair.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
-            this.sair.Location = new System.Drawing.Point(918, 11);
+            this.sair.Location = new System.Drawing.Point(851, 11);
             this.sair.Name = "sair";
             this.sair.Size = new System.Drawing.Size(62, 31);
             this.sair.TabIndex = 2;
@@ -184,7 +189,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(634, 111);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(567, 111);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // CadServico
@@ -195,9 +200,9 @@
             this.CadServico.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CadServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CadServico.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CadServico.Location = new System.Drawing.Point(477, 3);
+            this.CadServico.Location = new System.Drawing.Point(426, 3);
             this.CadServico.Name = "CadServico";
-            this.CadServico.Size = new System.Drawing.Size(154, 105);
+            this.CadServico.Size = new System.Drawing.Size(138, 105);
             this.CadServico.TabIndex = 3;
             this.CadServico.Text = "Gerenciar Serviços";
             this.CadServico.UseVisualStyleBackColor = false;
@@ -211,9 +216,9 @@
             this.CadProduto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CadProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CadProduto.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CadProduto.Location = new System.Drawing.Point(319, 3);
+            this.CadProduto.Location = new System.Drawing.Point(285, 3);
             this.CadProduto.Name = "CadProduto";
-            this.CadProduto.Size = new System.Drawing.Size(152, 105);
+            this.CadProduto.Size = new System.Drawing.Size(135, 105);
             this.CadProduto.TabIndex = 2;
             this.CadProduto.Text = "Gerenciar Produtos";
             this.CadProduto.UseVisualStyleBackColor = false;
@@ -227,9 +232,9 @@
             this.CadFuncionario.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CadFuncionario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CadFuncionario.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CadFuncionario.Location = new System.Drawing.Point(161, 3);
+            this.CadFuncionario.Location = new System.Drawing.Point(144, 3);
             this.CadFuncionario.Name = "CadFuncionario";
-            this.CadFuncionario.Size = new System.Drawing.Size(152, 105);
+            this.CadFuncionario.Size = new System.Drawing.Size(135, 105);
             this.CadFuncionario.TabIndex = 1;
             this.CadFuncionario.Text = "Gerenciar Funcionários";
             this.CadFuncionario.UseVisualStyleBackColor = false;
@@ -246,7 +251,7 @@
             this.CadCliente.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.CadCliente.Location = new System.Drawing.Point(3, 3);
             this.CadCliente.Name = "CadCliente";
-            this.CadCliente.Size = new System.Drawing.Size(152, 105);
+            this.CadCliente.Size = new System.Drawing.Size(135, 105);
             this.CadCliente.TabIndex = 0;
             this.CadCliente.Text = "Gerenciar Clientes";
             this.CadCliente.UseVisualStyleBackColor = false;
@@ -257,39 +262,87 @@
             this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.BackColor = System.Drawing.Color.DodgerBlue;
             this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.ordemServico, 0, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(343, 274);
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 1);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(343, 272);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(635, 338);
-            this.tableLayoutPanel3.TabIndex = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(569, 321);
+            this.tableLayoutPanel3.TabIndex = 5;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel5.BackColor = System.Drawing.Color.DodgerBlue;
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.ordemServico, 0, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 147F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(563, 154);
+            this.tableLayoutPanel5.TabIndex = 4;
             // 
             // ordemServico
             // 
-            this.ordemServico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.ordemServico.BackColor = System.Drawing.Color.SteelBlue;
             this.ordemServico.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ordemServico.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ordemServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ordemServico.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.ordemServico.Location = new System.Drawing.Point(3, 3);
             this.ordemServico.Name = "ordemServico";
-            this.ordemServico.Size = new System.Drawing.Size(629, 332);
+            this.ordemServico.Size = new System.Drawing.Size(557, 148);
             this.ordemServico.TabIndex = 0;
-            this.ordemServico.Text = "Gerar Ordem de Serviço";
+            this.ordemServico.Text = "Ordens de Serviço";
             this.ordemServico.UseVisualStyleBackColor = false;
-            this.ordemServico.Click += new System.EventHandler(this.ordemServico_Click);
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.DodgerBlue;
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.notaServico, 0, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 163);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(563, 155);
+            this.tableLayoutPanel4.TabIndex = 3;
+            // 
+            // notaServico
+            // 
+            this.notaServico.BackColor = System.Drawing.Color.SteelBlue;
+            this.notaServico.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.notaServico.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.notaServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notaServico.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.notaServico.Location = new System.Drawing.Point(3, 3);
+            this.notaServico.Name = "notaServico";
+            this.notaServico.Size = new System.Drawing.Size(557, 149);
+            this.notaServico.TabIndex = 0;
+            this.notaServico.Text = "Notas de Serviço";
+            this.notaServico.UseVisualStyleBackColor = false;
+            this.notaServico.Click += new System.EventHandler(this.notaServico_Click);
             // 
             // MenuAssistencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(986, 628);
+            this.ClientSize = new System.Drawing.Size(919, 611);
+            this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.panel2);
@@ -306,6 +359,8 @@
             this.panel2.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -326,8 +381,11 @@
         private System.Windows.Forms.Button CadProduto;
         private System.Windows.Forms.Button CadFuncionario;
         private System.Windows.Forms.Button CadCliente;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Button ordemServico;
         private System.Windows.Forms.Label sair;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Button ordemServico;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button notaServico;
     }
 }

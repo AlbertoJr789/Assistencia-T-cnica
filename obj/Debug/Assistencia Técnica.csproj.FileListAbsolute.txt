@@ -19,3 +19,6 @@ D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormGerenP
 D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormCadFuncionarios.resources
 D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormCadServicos.resources
 D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormGerenServicos.resources
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormCadNota.resources
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormGerenNota.resources
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormPrintNota.resources

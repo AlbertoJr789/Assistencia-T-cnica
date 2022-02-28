@@ -152,14 +152,30 @@ namespace Assistencia_Técnica
 
                 //preenchendo a primeira tabela de clientes e adicionando ao DataGrid
                 adp.Fill(tblProdSql);
-                dgProd.DataSource = tblProdSql;
+
+                DataTable tblProd = tblProdSql.Clone();
+
+                tblProd.Columns["Preco_Produto"].DataType = typeof(string);
+
+                foreach(DataRow linha in tblProdSql.Rows)
+                {
+                    tblProd.ImportRow(linha);
+                }
+
+                foreach(DataRow linha in tblProd.Rows)
+                {
+                    //Converte para valor monetário
+                    linha["Preco_Produto"] = Convert.ToDecimal(linha["Preco_Produto"]).ToString("C");
+                    
+                }
+
+                dgProd.DataSource = tblProd;
 
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show("Erro de banco de dados: " + ex);
             }
-
 
         }
         public void mostrarServicos(string cmd, DataGridView dgServ)
@@ -172,7 +188,22 @@ namespace Assistencia_Técnica
 
                 //preenchendo a primeira tabela de clientes e adicionando ao DataGrid
                 adp.Fill(tblServSql);
-                dgServ.DataSource = tblServSql;
+
+                DataTable tblServ = tblServSql.Clone();
+                tblServ.Columns["Preco_Servico"].DataType = typeof(string);
+                foreach(DataRow linha in tblServSql.Rows)
+                {
+                    tblServ.ImportRow(linha);
+                }
+
+                foreach(DataRow linha in tblServ.Rows)
+                {
+                    //Converte para valor monetário
+                    linha["Preco_Servico"] = Convert.ToDecimal(linha["Preco_Servico"]).ToString("C");
+
+                }
+
+                dgServ.DataSource = tblServ;
 
             }
             catch (MySqlException ex)
@@ -182,57 +213,198 @@ namespace Assistencia_Técnica
 
 
         }
-        public bool ChecarLogin(string user,string userSenha)
+        public List<string> obterNomesClientesDB()
         {
-            MySqlDataReader leitor = null;
+            List<string> nomes = new List<string>();
+           
             try
-            {               
-                string cmd = "SELECT * FROM loginusuario WHERE Usuario ='"+ user +"' AND Senha='" + userSenha + "'";
-                MySqlCommand comando = new MySqlCommand(cmd,conexao);
-                 leitor = comando.ExecuteReader();
-
-                if (leitor.HasRows) //se tiver encontrado algum registro
+            {
+                string cmd = "SELECT Nome_Cliente FROM cliente";
+                MySqlCommand cmdCli = new MySqlCommand(cmd, conexao);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmdCli);
+                DataTable tblNomes = new DataTable();
+                adp.Fill(tblNomes);
+                
+                foreach(DataRow linha in tblNomes.Rows)
                 {
+                    nomes.Add(linha["Nome_Cliente"].ToString());
 
-                    leitor.Close();
-                    return true;
+                }                             
 
-                } 
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados: " + ex);
+            }
+
+            return nomes;
+
+        }
+        public List<string> obterNomesFuncionariosDB()
+        {
+            List<string> nomes = new List<string>();
+
+            try
+            {
+                string cmd = "SELECT Nome_Funcionario FROM funcionario";
+                MySqlCommand cmdFun = new MySqlCommand(cmd, conexao);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmdFun);
+                DataTable tblNomes = new DataTable();
+                adp.Fill(tblNomes);
+
+                foreach (DataRow linha in tblNomes.Rows)
+                {
+                    nomes.Add(linha["Nome_Funcionario"].ToString());
+
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados: " + ex);
+            }
+
+            return nomes;
+
+        }
+        public void ClienteOS(string nome,ref Pessoa cli,ref Endereco endCli,ref Contato conCli)
+        {
+            string cmd = "SELECT * from cliente WHERE Nome_Cliente ='" + nome + "'";
+            MySqlDataReader leitor = null;
+
+            try
+            {                
+                MySqlCommand cmdCli = new MySqlCommand(cmd, conexao);
+                leitor = cmdCli.ExecuteReader();
+
+                int IdEnd = 0;
+                int IdCon = 0;
+
+                while (leitor.Read())
+                {
+                    //obtendo pessoais dados do cliente
+                    cli.ID = Convert.ToInt32(leitor["ID_Cliente"]);
+                    cli.Nome = leitor["Nome_Cliente"].ToString();
+                    cli.CPF = leitor["CPF_Cliente"].ToString();
+                    cli.RG = leitor["RG_Cliente"].ToString();
+
+                    //resguardando os IDs
+                     IdEnd = Convert.ToInt32(leitor["ID_Endereco"]);
+                     IdCon = Convert.ToInt32(leitor["ID_Contato"]);
+
+                }
+                
+                leitor.Dispose();
+                leitor.Close();
+                //obtendo o endereço do banco de dados
+                cmd = "SELECT * FROM endereco WHERE ID_Endereço=" + IdEnd;
+                cmdCli.CommandText = cmd;
+                leitor = cmdCli.ExecuteReader();
+                
+                while (leitor.Read())
+                {
+                    //atribuindo ao objeto
+                    endCli.Logradouro = leitor["Logradouro"].ToString();
+                    endCli.Numero = leitor["Número"].ToString();
+                    endCli.Bairro = leitor["Bairro"].ToString();
+                    endCli.Estado = leitor["Estado"].ToString();
+                    endCli.Cidade = leitor["Cidade"].ToString();
+
+                }
+
+                leitor.Dispose();
+                leitor.Close();
+                //obtendo o contato do banco de dados
+                cmd = "SELECT * FROM contato WHERE ID_Contato=" + IdCon;
+                cmdCli.CommandText = cmd;
+                leitor = cmdCli.ExecuteReader();
+                
+                while (leitor.Read())
+                {
+                    //atribuindo ao objeto
+                    conCli.Contato1 = leitor["Telefone"].ToString();
+                    conCli.Contato2 = leitor["Telefone2"].ToString();
+
+                }
                
             }
             catch (MySqlException ex)
             {
-                
-                MessageBox.Show("Erro de banco de dados : " + ex.Message);
-
+                MessageBox.Show("Erro de banco de dados: " + ex);
             }
 
+            leitor.Dispose();
             leitor.Close();
-            return false;
         }
-        public string ObterUsuario(string user, string userSenha)
+        public void FuncionariosOS(string nome, ref Funcionario fun, ref Endereco endFun, ref Contato conFun)
         {
-            string usuario = null;
+            string cmd = "SELECT * from funcionario WHERE Nome_Funcionario='" + nome + "'";
+            MySqlDataReader leitor = null;
 
             try
             {
-                string cmd = "SELECT ID_Funcionario_Login FROM loginusuario WHERE Usuario ='" + user + "' AND Senha='" + userSenha + "'";
-                MySqlCommand comando = new MySqlCommand(cmd, conexao);
-                int ID_Funcionario = (int)comando.ExecuteScalar(); //pega o elemento da primeira coluna
+                MySqlCommand cmdCli = new MySqlCommand(cmd, conexao);
+                leitor = cmdCli.ExecuteReader();
 
-                cmd = "SELECT Nome FROM funcionario WHERE ID_Funcionario = " + ID_Funcionario;
-                comando.CommandText = cmd;
+                int IdEnd = 0;
+                int IdCon = 0;
 
-                return (string)comando.ExecuteScalar();
+                while (leitor.Read())
+                {
+                    //obtendo pessoais dados do cliente
+                    fun.ID = Convert.ToInt32(leitor["ID_Funcionario"]);
+                    fun.Nome = leitor["Nome_Funcionario"].ToString();
+                    fun.CPF = leitor["CPF_Funcionario"].ToString();
+                    fun.RG = leitor["RG_Funcionario"].ToString();
+                    fun.Funcao = leitor["Função"].ToString();
+
+                    //resguardando os IDs
+                    IdEnd = Convert.ToInt32(leitor["ID_Endereco"]);
+                    IdCon = Convert.ToInt32(leitor["ID_Contato"]);
+
+                }
+
+                leitor.Dispose();
+                leitor.Close();
+                //obtendo o endereço do banco de dados
+                cmd = "SELECT * FROM endereco WHERE ID_Endereço=" + IdEnd;
+                cmdCli.CommandText = cmd;
+                leitor = cmdCli.ExecuteReader();
+
+                while (leitor.Read())
+                {
+                    //atribuindo ao objeto
+                    endFun.Logradouro = leitor["Logradouro"].ToString();
+                    endFun.Numero = leitor["Número"].ToString();
+                    endFun.Bairro = leitor["Bairro"].ToString();
+                    endFun.Estado = leitor["Estado"].ToString();
+                    endFun.Cidade = leitor["Cidade"].ToString();
+
+                }
+
+                leitor.Dispose();
+                leitor.Close();
+                //obtendo o contato do banco de dados
+                cmd = "SELECT * FROM contato WHERE ID_Contato=" + IdCon;
+                cmdCli.CommandText = cmd;
+                leitor = cmdCli.ExecuteReader();
+
+                while (leitor.Read())
+                {
+                    //atribuindo ao objeto
+                    conFun.Contato1 = leitor["Telefone"].ToString();
+                    conFun.Contato2 = leitor["Telefone2"].ToString();
+
+                }
 
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Erro de banco de dados : " + ex.Message);
-
+                MessageBox.Show("Erro de banco de dados: " + ex);
             }
 
-            return usuario;
+            leitor.Dispose();
+            leitor.Close();
         }
         public string obterEndereco(int ID_Endereco)
         {
@@ -305,6 +477,58 @@ namespace Assistencia_Técnica
             return null;
 
         }
+        public string ObterUsuario(string user, string userSenha)
+        {
+            string usuario = null;
+
+            try
+            {
+                string cmd = "SELECT ID_Funcionario_Login FROM loginusuario WHERE Usuario ='" + user + "' AND Senha='" + userSenha + "'";
+                MySqlCommand comando = new MySqlCommand(cmd, conexao);
+                int ID_Funcionario = (int)comando.ExecuteScalar(); //pega o elemento da primeira coluna
+
+                cmd = "SELECT Nome_Funcionario FROM funcionario WHERE ID_Funcionario = " + ID_Funcionario;
+                comando.CommandText = cmd;
+
+                return (string)comando.ExecuteScalar();
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados : " + ex.Message);
+
+            }
+
+            return usuario;
+        }
+        public bool ChecarLogin(string user,string userSenha)
+        {
+            MySqlDataReader leitor = null;
+            try
+            {               
+                string cmd = "SELECT * FROM loginusuario WHERE Usuario ='"+ user +"' AND Senha='" + userSenha + "'";
+                MySqlCommand comando = new MySqlCommand(cmd,conexao);
+                 leitor = comando.ExecuteReader();
+
+                if (leitor.HasRows) //se tiver encontrado algum registro
+                {
+
+                    leitor.Close();
+                    return true;
+
+                } 
+               
+            }
+            catch (MySqlException ex)
+            {
+                
+                MessageBox.Show("Erro de banco de dados : " + ex.Message);
+
+            }
+
+            leitor.Close();
+            return false;
+        }
 
         //Operações de INSERT
         public void addCliente(Pessoa cliente,Endereco endereco,Contato contato)
@@ -315,7 +539,7 @@ namespace Assistencia_Técnica
                 int ID_Endereco_Cliente = addEndereco(endereco);
                 int ID_Contato_Cliente = addContato(contato);
                         
-            string cmd = "INSERT INTO cliente (Nome,RG,CPF,ID_Contato,ID_Endereco) " +
+            string cmd = "INSERT INTO cliente (Nome_Cliente,RG_Cliente,CPF_Cliente,ID_Contato,ID_Endereco) " +
                     " values (@nome,@rg,@cpf,@contato,@endereco)";
                 
                 MySqlCommand comando = new MySqlCommand(cmd, conexao);
@@ -333,7 +557,7 @@ namespace Assistencia_Técnica
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Erro de banco de dados : " + ex.Message);
+                MessageBox.Show("Erro de banco de dados (Cliente): " + ex.Message);
                    
             }
                     
@@ -346,7 +570,7 @@ namespace Assistencia_Técnica
                 int ID_Endereco_Cliente = addEndereco(endereco);
                 int ID_Contato_Cliente = addContato(contato);
 
-                string cmd = "INSERT INTO funcionario (Nome,Função,RG,CPF,ID_Contato,ID_Endereco) " +
+                string cmd = "INSERT INTO funcionario (Nome_Funcionario,Função,RG_Funcionario,CPF_Funcionario,ID_Contato,ID_Endereco) " +
                         " values (@nome,@funcao,@rg,@cpf,@contato,@endereco)";
 
                 MySqlCommand comando = new MySqlCommand(cmd, conexao);
@@ -365,7 +589,7 @@ namespace Assistencia_Técnica
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Erro de banco de dados : " + ex.Message);
+                MessageBox.Show("Erro de banco de dados (Funcionário) : " + ex.Message);
 
             }
 
@@ -375,7 +599,7 @@ namespace Assistencia_Técnica
         {
             try
             {
-                string cmd = "INSERT INTO produto (Nome,Preco,Estoque) VALUES (@nome,@preco,@estoque)";
+                string cmd = "INSERT INTO produto (Nome_Produto,Preco_Produto,Estoque) VALUES (@nome,@preco,@estoque)";
                        
                 MySqlCommand comando = new MySqlCommand(cmd, conexao);
 
@@ -399,7 +623,7 @@ namespace Assistencia_Técnica
         {
             try
             {
-                string cmd = "INSERT INTO servico (Nome,Preco) VALUES (@nome,@preco)";
+                string cmd = "INSERT INTO servico (Nome_Servico,Preco_Servico) VALUES (@nome,@preco)";
 
                 MySqlCommand comando = new MySqlCommand(cmd, conexao);
 
@@ -488,7 +712,7 @@ namespace Assistencia_Técnica
                  attEndereco(ID_End,endereco);
                  attContato(ID_Cont,contato);
 
-                string cmd = "UPDATE cliente SET Nome = @nome,RG = @rg,CPF = @cpf" +
+                string cmd = "UPDATE cliente SET Nome_Cliente = @nome,RG_Cliente = @rg,CPF_Cliente = @cpf" +
                         " WHERE ID_Cliente="+ID;
 
                 MySqlCommand comando = new MySqlCommand(cmd, conexao);
@@ -516,7 +740,7 @@ namespace Assistencia_Técnica
                  attEndereco(ID_End,endereco);
                  attContato(ID_Cont,contato);
 
-                string cmd = "UPDATE funcionario SET Nome = @nome,Função = @funcao,RG = @rg,CPF = @cpf" +
+                string cmd = "UPDATE funcionario SET Nome_Funcionario = @nome,Função = @funcao,RG_Funcionario = @rg,CPF_Funcionario = @cpf" +
                         " WHERE ID_Funcionario="+ID;
 
                 MySqlCommand comando = new MySqlCommand(cmd, conexao);
@@ -542,7 +766,7 @@ namespace Assistencia_Técnica
         {
             try
             {            
-                string cmd = "UPDATE produto SET Nome = @nome,Preco = @preco,Estoque = @estoque" +
+                string cmd = "UPDATE produto SET Nome_Produto = @nome,Preco_Produto = @preco,Estoque = @estoque" +
                         " WHERE ID_Produto=" + ID;
 
                 MySqlCommand comando = new MySqlCommand(cmd, conexao);
@@ -554,7 +778,7 @@ namespace Assistencia_Técnica
 
                 comando.ExecuteNonQuery();
 
-                MessageBox.Show("Produto Atualizado com sucesso !", "Edição de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Produto Atualizado com sucesso !", "Edição de Produto", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (MySqlException ex)
@@ -568,7 +792,7 @@ namespace Assistencia_Técnica
         {
             try
             {
-                string cmd = "UPDATE servico SET Nome = @nome,Preco = @preco" +
+                string cmd = "UPDATE servico SET Nome_Servico = @nome,Preco_Servico = @preco" +
                         " WHERE ID_Servico=" + ID;
 
                 MySqlCommand comando = new MySqlCommand(cmd, conexao);
@@ -726,7 +950,6 @@ namespace Assistencia_Técnica
 
             }
         }
-
         public void excluirEndereco(int ID)
         {
             try

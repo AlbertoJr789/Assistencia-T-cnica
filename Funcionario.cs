@@ -8,11 +8,8 @@ namespace Assistencia_Técnica
 {
     public class Funcionario : Pessoa
     {
-
         private string funcao;
-
         public string Funcao { get { return funcao; } set { funcao = value; } }
-
 
     }
 }

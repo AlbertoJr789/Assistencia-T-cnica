@@ -12,9 +12,20 @@ namespace Assistencia_Técnica
 {
     public partial class FormGerenClientes : Form
     {
-        public FormGerenClientes()
+        private bool pesquisaOS = false;
+        private FormCadNota cadOS = null;
+
+        public FormGerenClientes(bool pesquisaOS,FormCadNota cadOS)
         {
             InitializeComponent();
+
+            if (pesquisaOS)
+            {
+                this.pesquisaOS = true;
+                this.cadOS = cadOS;
+            }
+
+
         }
 
         private void MostrarClientes(string cmd)
@@ -38,7 +49,6 @@ namespace Assistencia_Técnica
 
         private void textBusca_Click(object sender, EventArgs e)
         {
-
             textBusca.Clear();
             textBusca.ForeColor = Color.Black;
 
@@ -46,28 +56,17 @@ namespace Assistencia_Técnica
 
         private void textBusca_Leave(object sender, EventArgs e)
         {
-
             if (textBusca.Text == "") {
 
                 textBusca.ForeColor = System.Drawing.SystemColors.ControlDark;
                 textBusca.Text = "Digite o nome aqui para buscar...";
+                
             }
             
-
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            if(textBusca.Text != "")
-            {
-                MostrarClientes("SELECT * FROM cliente WHERE Nome LIKE '" + textBusca.Text + "%'");
-
-            }
-            else
-            {
-                MessageBox.Show("Digite algum nome para que a pesquisa seja efetuada !");
-            }
-
+        private void textBusca_TextChanged(object sender, EventArgs e)
+        {           
+            MostrarClientes("SELECT * FROM cliente WHERE Nome_Cliente LIKE '" + textBusca.Text + "%'");
         }
 
         private void refresh_Click(object sender, EventArgs e)
@@ -104,11 +103,36 @@ namespace Assistencia_Técnica
                     }
 
                 }
-                                                                   
+
 
             }
+            else
+            {
+                if (pesquisaOS)
+                {                    
+                    cadOS.dadosOS(dataGridClientes.Rows[e.RowIndex], "cliente");
+                    Close();
+                }
+                else //abre o perfil do cliente
+                {
+
+
+
+                }
+
+            }
+         
 
         }
 
+        private void FormGerenClientes_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!pesquisaOS)
+            {
+                MenuAssistencia mostrarMenu = new MenuAssistencia(MenuAssistencia.User, MenuAssistencia.UserSenha);
+                mostrarMenu.Show();
+
+            }
+        }
     }
 }

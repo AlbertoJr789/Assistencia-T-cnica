@@ -35,6 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labelOS = new System.Windows.Forms.Label();
             this.refresh = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridFuncionarios = new System.Windows.Forms.DataGridView();
@@ -69,6 +70,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel2.Controls.Add(this.labelOS);
             this.panel2.Controls.Add(this.refresh);
             this.panel2.Controls.Add(this.tableLayoutPanel1);
             this.panel2.Controls.Add(this.botaoCadastro);
@@ -78,6 +80,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1078, 643);
             this.panel2.TabIndex = 3;
+            // 
+            // labelOS
+            // 
+            this.labelOS.AutoSize = true;
+            this.labelOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.labelOS.Location = new System.Drawing.Point(22, 117);
+            this.labelOS.Name = "labelOS";
+            this.labelOS.Size = new System.Drawing.Size(459, 20);
+            this.labelOS.TabIndex = 7;
+            this.labelOS.Text = "Caso encontre o funcionário desejado, clique em seu nome. ";
+            this.labelOS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // refresh
             // 
@@ -153,7 +166,7 @@
             // 
             // Nome
             // 
-            this.Nome.DataPropertyName = "Nome";
+            this.Nome.DataPropertyName = "Nome_Funcionario";
             this.Nome.FillWeight = 181.944F;
             this.Nome.HeaderText = "Nome";
             this.Nome.Name = "Nome";
@@ -168,7 +181,7 @@
             // 
             // RG
             // 
-            this.RG.DataPropertyName = "RG";
+            this.RG.DataPropertyName = "RG_Funcionario";
             this.RG.FillWeight = 113.4989F;
             this.RG.HeaderText = "R.G";
             this.RG.Name = "RG";
@@ -176,7 +189,7 @@
             // 
             // CPF
             // 
-            this.CPF.DataPropertyName = "CPF";
+            this.CPF.DataPropertyName = "CPF_Funcionario";
             this.CPF.FillWeight = 122.1848F;
             this.CPF.HeaderText = "CPF";
             this.CPF.Name = "CPF";
@@ -272,14 +285,12 @@
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pictureBox1.Location = new System.Drawing.Point(975, 66);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(42, 20);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox1, "Iniciar Pesquisa");
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
             // textBusca
             // 
@@ -291,6 +302,7 @@
             this.textBusca.TabIndex = 0;
             this.textBusca.Text = "Digite o nome aqui para buscar...";
             this.textBusca.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBusca_MouseClick);
+            this.textBusca.TextChanged += new System.EventHandler(this.textBusca_TextChanged);
             this.textBusca.Leave += new System.EventHandler(this.textBusca_Leave_1);
             // 
             // panel1
@@ -324,6 +336,7 @@
             this.Name = "FormGerenFuncionarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gerenciamento de Funcionários";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormGerenFuncionarios_FormClosed);
             this.Load += new System.EventHandler(this.FormGerenFuncionarios_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -360,5 +373,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_Cont;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Excluir;
+        private System.Windows.Forms.Label labelOS;
     }
 }

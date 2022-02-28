@@ -12,14 +12,26 @@ namespace Assistencia_Técnica
 {
     public partial class FormGerenServicos : Form
     {
-        public FormGerenServicos()
+        private bool pesquisaOS;
+        private FormCadNota cadOS = null;
+
+        public FormGerenServicos(bool pesquisaOS,FormCadNota cadOS)
         {
             InitializeComponent();
+
+            if (pesquisaOS)
+            {
+                this.pesquisaOS = pesquisaOS;
+                this.cadOS = cadOS;
+                labelOS.Visible = true;
+
+            }
+
         }
 
         private void botaoCadastro_Click(object sender, EventArgs e)
         {
-            FormCadServicos cadServico = new FormCadServicos(false,null);
+            FormCadServicos cadServico = new FormCadServicos(false,null,false,null);
             cadServico.ShowDialog();
         }
 
@@ -44,20 +56,6 @@ namespace Assistencia_Técnica
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-            if (textBusca.Text != "")
-            {
-                MostrarServicos("SELECT * FROM servico WHERE Nome LIKE '" + textBusca.Text + "%'");
-
-            }
-            else
-            {
-                MessageBox.Show("Digite algum nome para que a pesquisa seja efetuada !");
-            }
-        }
-
         private void refresh_Click(object sender, EventArgs e)
         {
             MostrarServicos("SELECT * FROM servico");
@@ -75,7 +73,7 @@ namespace Assistencia_Técnica
                 {//clicou no botao de editar
 
                     DataGridViewRow linhaServico = dataGridServicos.Rows[e.RowIndex];
-                    FormCadServicos editarCad = new FormCadServicos(true, linhaServico);
+                    FormCadServicos editarCad = new FormCadServicos(true, linhaServico,false,null);
                     editarCad.ShowDialog();
                     MostrarServicos("SELECT * FROM servico");
                 }
@@ -94,12 +92,37 @@ namespace Assistencia_Técnica
                 }
 
             }
+            else
+            {
+                if (pesquisaOS && e.RowIndex >= 0)
+                {
+                    cadOS.dadosOS(dataGridServicos.Rows[e.RowIndex], "servico");
+                    Close();
+                }
+
+
+            }
         }
 
         private void FormGerenServicos_Load(object sender, EventArgs e)
         {
             MostrarServicos("SELECT * FROM servico");
         }
-    
+
+        private void textBusca_TextChanged(object sender, EventArgs e)
+        {
+           MostrarServicos("SELECT * FROM servico WHERE Nome_Servico LIKE '" + textBusca.Text + "%'");
+        }
+
+        private void FormGerenServicos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!pesquisaOS)
+            {
+
+                MenuAssistencia mostrarMenu = new MenuAssistencia(MenuAssistencia.User, MenuAssistencia.UserSenha);
+                mostrarMenu.Show();
+
+            }
+        }
     }
 }

@@ -120,11 +120,23 @@
     <Compile Include="FormCadFuncionarios.Designer.cs">
       <DependentUpon>FormCadFuncionarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCadNota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCadNota.Designer.cs">
+      <DependentUpon>FormCadNota.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCadServicos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormCadServicos.Designer.cs">
       <DependentUpon>FormCadServicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGerenNota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGerenNota.Designer.cs">
+      <DependentUpon>FormGerenNota.cs</DependentUpon>
     </Compile>
     <Compile Include="FormGerenProdutos.cs">
       <SubType>Form</SubType>
@@ -171,6 +183,12 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Pessoa.cs" />
+    <Compile Include="FormPrintNota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPrintNota.Designer.cs">
+      <DependentUpon>FormPrintNota.cs</DependentUpon>
+    </Compile>
     <Compile Include="Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -181,8 +199,14 @@
     <EmbeddedResource Include="FormCadFuncionarios.resx">
       <DependentUpon>FormCadFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCadNota.resx">
+      <DependentUpon>FormCadNota.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCadServicos.resx">
       <DependentUpon>FormCadServicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGerenNota.resx">
+      <DependentUpon>FormGerenNota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGerenProdutos.resx">
       <DependentUpon>FormGerenProdutos.cs</DependentUpon>
@@ -204,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuAssistencia.resx">
       <DependentUpon>MenuAssistencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrintNota.resx">
+      <DependentUpon>FormPrintNota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

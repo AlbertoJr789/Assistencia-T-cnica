@@ -30,9 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGerenProdutos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labelOS = new System.Windows.Forms.Label();
             this.refresh = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridProdutos = new System.Windows.Forms.DataGridView();
@@ -42,12 +43,12 @@
             this.Estoque = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Excluir = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.botaoCadastro = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBusca = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.botaoCadastro = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -62,6 +63,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel2.Controls.Add(this.labelOS);
             this.panel2.Controls.Add(this.refresh);
             this.panel2.Controls.Add(this.tableLayoutPanel1);
             this.panel2.Controls.Add(this.botaoCadastro);
@@ -71,6 +73,19 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(627, 617);
             this.panel2.TabIndex = 3;
+            // 
+            // labelOS
+            // 
+            this.labelOS.AutoSize = true;
+            this.labelOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.labelOS.Location = new System.Drawing.Point(24, 119);
+            this.labelOS.Name = "labelOS";
+            this.labelOS.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.labelOS.Size = new System.Drawing.Size(429, 20);
+            this.labelOS.TabIndex = 9;
+            this.labelOS.Text = "Caso encontre o produto desejado, clique em seu nome ";
+            this.labelOS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelOS.Visible = false;
             // 
             // refresh
             // 
@@ -141,7 +156,7 @@
             // 
             // Descrição
             // 
-            this.Descrição.DataPropertyName = "Nome";
+            this.Descrição.DataPropertyName = "Nome_Produto";
             this.Descrição.FillWeight = 181.944F;
             this.Descrição.HeaderText = "Descrição";
             this.Descrição.Name = "Descrição";
@@ -149,7 +164,7 @@
             // 
             // Preco
             // 
-            this.Preco.DataPropertyName = "Preco";
+            this.Preco.DataPropertyName = "Preco_Produto";
             this.Preco.FillWeight = 113.4989F;
             this.Preco.HeaderText = "Preço";
             this.Preco.Name = "Preco";
@@ -165,13 +180,13 @@
             // 
             // Editar
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.Editar.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.Editar.DefaultCellStyle = dataGridViewCellStyle1;
             this.Editar.FillWeight = 64.42782F;
             this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Editar.HeaderText = "";
@@ -182,13 +197,13 @@
             // 
             // Excluir
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.Excluir.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.Excluir.DefaultCellStyle = dataGridViewCellStyle2;
             this.Excluir.FillWeight = 62.43589F;
             this.Excluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Excluir.HeaderText = "";
@@ -197,6 +212,19 @@
             this.Excluir.Text = "Excluir";
             this.Excluir.UseColumnTextForButtonValue = true;
             // 
+            // botaoCadastro
+            // 
+            this.botaoCadastro.BackColor = System.Drawing.SystemColors.Highlight;
+            this.botaoCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botaoCadastro.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.botaoCadastro.Location = new System.Drawing.Point(24, 55);
+            this.botaoCadastro.Name = "botaoCadastro";
+            this.botaoCadastro.Size = new System.Drawing.Size(252, 64);
+            this.botaoCadastro.TabIndex = 3;
+            this.botaoCadastro.Text = "Cadastrar Produto";
+            this.botaoCadastro.UseVisualStyleBackColor = false;
+            this.botaoCadastro.Click += new System.EventHandler(this.botaoCadastro_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -204,14 +232,12 @@
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pictureBox1.Location = new System.Drawing.Point(524, 66);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(42, 20);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox1, "Iniciar Pesquisa");
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // textBusca
             // 
@@ -223,6 +249,7 @@
             this.textBusca.TabIndex = 0;
             this.textBusca.Text = "Digite o nome aqui para buscar...";
             this.textBusca.Click += new System.EventHandler(this.textBusca_Click);
+            this.textBusca.TextChanged += new System.EventHandler(this.textBusca_TextChanged);
             this.textBusca.Leave += new System.EventHandler(this.textBusca_Leave);
             // 
             // label1
@@ -246,19 +273,6 @@
             this.panel1.Size = new System.Drawing.Size(651, 729);
             this.panel1.TabIndex = 2;
             // 
-            // botaoCadastro
-            // 
-            this.botaoCadastro.BackColor = System.Drawing.SystemColors.Highlight;
-            this.botaoCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botaoCadastro.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.botaoCadastro.Location = new System.Drawing.Point(24, 55);
-            this.botaoCadastro.Name = "botaoCadastro";
-            this.botaoCadastro.Size = new System.Drawing.Size(252, 64);
-            this.botaoCadastro.TabIndex = 3;
-            this.botaoCadastro.Text = "Cadastrar Produto";
-            this.botaoCadastro.UseVisualStyleBackColor = false;
-            this.botaoCadastro.Click += new System.EventHandler(this.botaoCadastro_Click);
-            // 
             // FormGerenProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,6 +283,7 @@
             this.Name = "FormGerenProdutos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gerenciamento de Produtos";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormGerenProdutos_FormClosed);
             this.Load += new System.EventHandler(this.FormGerenProdutos_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -293,12 +308,13 @@
         private System.Windows.Forms.TextBox textBusca;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button botaoCadastro;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descrição;
         private System.Windows.Forms.DataGridViewTextBoxColumn Preco;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estoque;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Excluir;
-        private System.Windows.Forms.Button botaoCadastro;
+        private System.Windows.Forms.Label labelOS;
     }
 }

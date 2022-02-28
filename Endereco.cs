@@ -8,13 +8,11 @@ namespace Assistencia_Técnica
 {
     public class Endereco
     {
-
-        //dados de endereço
         private string logradouro;
-        private string numero;
         private string bairro;
-        private string estado;
+        private string numero;
         private string cidade;
+        private string estado;
 
         public Endereco obterEndereco(string endereco)
         {                       

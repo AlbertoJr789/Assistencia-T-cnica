@@ -38,12 +38,12 @@
             this.labelPreco = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.descricao = new System.Windows.Forms.TextBox();
+            this.preco = new System.Windows.Forms.MaskedTextBox();
             this.estoque = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.preco = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.estoque)).BeginInit();
@@ -62,7 +62,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.label2.Location = new System.Drawing.Point(3, 423);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(424, 40);
+            this.label2.Size = new System.Drawing.Size(450, 40);
             this.label2.TabIndex = 3;
             this.label2.Text = "Campos marcados com (*) requerem preenchimento obrigatório\r\n";
             // 
@@ -81,7 +81,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(436, 118);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(462, 118);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // botLimpar
@@ -94,9 +94,9 @@
             this.botLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.botLimpar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.botLimpar.Location = new System.Drawing.Point(148, 3);
+            this.botLimpar.Location = new System.Drawing.Point(157, 3);
             this.botLimpar.Name = "botLimpar";
-            this.botLimpar.Size = new System.Drawing.Size(139, 112);
+            this.botLimpar.Size = new System.Drawing.Size(148, 112);
             this.botLimpar.TabIndex = 1;
             this.botLimpar.Text = "Limpar";
             this.botLimpar.UseVisualStyleBackColor = false;
@@ -114,7 +114,7 @@
             this.botaoAdd.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.botaoAdd.Location = new System.Drawing.Point(3, 3);
             this.botaoAdd.Name = "botaoAdd";
-            this.botaoAdd.Size = new System.Drawing.Size(139, 112);
+            this.botaoAdd.Size = new System.Drawing.Size(148, 112);
             this.botaoAdd.TabIndex = 0;
             this.botaoAdd.Text = "Adicionar";
             this.botaoAdd.UseVisualStyleBackColor = false;
@@ -130,9 +130,9 @@
             this.botCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.botCancelar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.botCancelar.Location = new System.Drawing.Point(293, 3);
+            this.botCancelar.Location = new System.Drawing.Point(311, 3);
             this.botCancelar.Name = "botCancelar";
-            this.botCancelar.Size = new System.Drawing.Size(140, 112);
+            this.botCancelar.Size = new System.Drawing.Size(148, 112);
             this.botCancelar.TabIndex = 2;
             this.botCancelar.Text = "Sair";
             this.botCancelar.UseVisualStyleBackColor = false;
@@ -159,7 +159,7 @@
             this.labelEstoque.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.labelEstoque.Location = new System.Drawing.Point(3, 221);
             this.labelEstoque.Name = "labelEstoque";
-            this.labelEstoque.Size = new System.Drawing.Size(424, 35);
+            this.labelEstoque.Size = new System.Drawing.Size(450, 35);
             this.labelEstoque.TabIndex = 6;
             this.labelEstoque.Text = "Estoque *";
             // 
@@ -173,7 +173,7 @@
             this.labelPreco.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.labelPreco.Location = new System.Drawing.Point(3, 102);
             this.labelPreco.Name = "labelPreco";
-            this.labelPreco.Size = new System.Drawing.Size(424, 36);
+            this.labelPreco.Size = new System.Drawing.Size(450, 36);
             this.labelPreco.TabIndex = 14;
             this.labelPreco.Text = "Preço *";
             // 
@@ -200,7 +200,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.673861F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.70983F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.80169F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(430, 463);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(456, 463);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // descricao
@@ -213,12 +213,39 @@
             this.descricao.TabIndex = 5;
             this.descricao.TextChanged += new System.EventHandler(this.descricao_TextChanged);
             // 
+            // preco
+            // 
+            this.preco.Location = new System.Drawing.Point(3, 141);
+            this.preco.Name = "preco";
+            this.preco.Size = new System.Drawing.Size(203, 20);
+            this.preco.TabIndex = 16;
+            this.preco.TextChanged += new System.EventHandler(this.preco_TextChanged);
+            this.preco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.preco_KeyPress);
+            this.preco.KeyUp += new System.Windows.Forms.KeyEventHandler(this.preco_KeyUp);
+            this.preco.Leave += new System.EventHandler(this.preco_Leave);
+            // 
             // estoque
             // 
             this.estoque.Location = new System.Drawing.Point(3, 259);
+            this.estoque.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.estoque.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.estoque.Name = "estoque";
             this.estoque.Size = new System.Drawing.Size(203, 20);
             this.estoque.TabIndex = 18;
+            this.estoque.ThousandsSeparator = true;
+            this.estoque.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // tableLayoutPanel2
             // 
@@ -234,7 +261,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 469F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 469F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 469F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(436, 469);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(462, 469);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // label1
@@ -267,7 +294,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(436, 709);
+            this.splitContainer1.Size = new System.Drawing.Size(462, 709);
             this.splitContainer1.SplitterDistance = 118;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -278,28 +305,18 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(436, 118);
+            this.panel1.Size = new System.Drawing.Size(462, 118);
             this.panel1.TabIndex = 3;
-            // 
-            // preco
-            // 
-            this.preco.Location = new System.Drawing.Point(3, 141);
-            this.preco.Name = "preco";
-            this.preco.Size = new System.Drawing.Size(203, 20);
-            this.preco.TabIndex = 16;
-            this.preco.TextChanged += new System.EventHandler(this.preco_TextChanged);
-            this.preco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.preco_KeyPress);
-            this.preco.KeyUp += new System.Windows.Forms.KeyEventHandler(this.preco_KeyUp);
-            this.preco.Leave += new System.EventHandler(this.preco_Leave);
             // 
             // FormCadProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 709);
+            this.ClientSize = new System.Drawing.Size(462, 709);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FormCadProdutos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.FormCadProdutos_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);

@@ -106,7 +106,10 @@ namespace Assistencia_Técnica
                 }
                             
                 if (this.Edicao)
+                {
                     clienteDB.attCliente(this.IdEdit, this.IdEnd, this.IdCont, cliente, endereco, contato);
+                    Close();
+                }
                 else
                     clienteDB.addCliente(cliente, endereco, contato);
 
@@ -304,7 +307,7 @@ namespace Assistencia_Técnica
                     labelCPF.ForeColor = Color.Black;
                 }
 
-                telefone1Cliente.Mask = "(00)0000-0000";
+                cpfCliente.Mask = "000,000,000-00";
 
 
             }

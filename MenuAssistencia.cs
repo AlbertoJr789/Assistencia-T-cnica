@@ -13,10 +13,12 @@ namespace Assistencia_Técnica
 {
     public partial class MenuAssistencia : Form
     {
-        
+        public static string User = null, UserSenha = null;
         public MenuAssistencia(string user, string userSenha)
         {
-            
+            User = user;
+            UserSenha = userSenha;
+
             InitializeComponent();
             MySqlConexao usuario = new MySqlConexao();   
             //obtem o nome do usuario e pega o primeiro nome
@@ -45,14 +47,16 @@ namespace Assistencia_Técnica
 
         private void CadCliente_Click(object sender, EventArgs e)
         {
-            FormGerenClientes menuClientes = new FormGerenClientes();
-            menuClientes.ShowDialog();
-            
+            FormGerenClientes menuClientes = new FormGerenClientes(false,null);
+            menuClientes.Show();
+            Close();
         }
 
         private void ordemServico_Click(object sender, EventArgs e)
         {
-
+            FormGerenNota menuOS = new FormGerenNota();
+            menuOS.Show();
+            Close();
         }
 
         private void sair_Click(object sender, EventArgs e)
@@ -64,20 +68,31 @@ namespace Assistencia_Técnica
 
         private void CadFuncionario_Click(object sender, EventArgs e)
         {           
-            FormGerenFuncionarios menuFuncionarios = new FormGerenFuncionarios();
-            menuFuncionarios.ShowDialog();
+            FormGerenFuncionarios menuFuncionarios = new FormGerenFuncionarios(false,null);
+            menuFuncionarios.Show();
+            Close();
         }
 
         private void CadServico_Click(object sender, EventArgs e)
         {
-            FormGerenServicos menuServicos = new FormGerenServicos();
-            menuServicos.ShowDialog();
+            FormGerenServicos menuServicos = new FormGerenServicos(false,null);
+            menuServicos.Show();
+            Close();
+        }
+
+        private void notaServico_Click(object sender, EventArgs e)
+        {
+            FormGerenNota menuNota = new FormGerenNota();
+            menuNota.Show();
+            Close();
+
         }
 
         private void CadProduto_Click(object sender, EventArgs e)
         {
-            FormGerenProdutos menuProdutos = new FormGerenProdutos();
-            menuProdutos.ShowDialog();
+            FormGerenProdutos menuProdutos = new FormGerenProdutos(false,null);
+            menuProdutos.Show();
+            Close();
         }
     }
 }

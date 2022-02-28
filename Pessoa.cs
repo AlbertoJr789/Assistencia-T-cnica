@@ -8,15 +8,15 @@ namespace Assistencia_Técnica
 {
     public class Pessoa
     {
-        // dados pessoais da pessoa
+
+        private int id;
         private string nome;
         private string rg;
         private string cpf;
-          
+        public int ID { get { return id; } set { id = value; } }
         public string Nome { get { return nome; } set { nome = value; } }
         public string RG { get { return rg; } set { rg = value; } } 
         public string CPF { get { return cpf; } set { cpf = value; } }
-                          
-                
+                                          
     }
 }

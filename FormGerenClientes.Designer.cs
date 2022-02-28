@@ -36,8 +36,8 @@ namespace Assistencia_Técnica
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.refresh = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBusca = new System.Windows.Forms.TextBox();
@@ -55,29 +55,14 @@ namespace Assistencia_Técnica
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Excluir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel2 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.labelOS = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(975, 66);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(42, 20);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox1, "Iniciar Pesquisa");
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // refresh
             // 
@@ -94,6 +79,20 @@ namespace Assistencia_Técnica
             this.refresh.TabStop = false;
             this.toolTip1.SetToolTip(this.refresh, "Atualizar Tabela");
             this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox1.Location = new System.Drawing.Point(975, 66);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(42, 20);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -126,6 +125,7 @@ namespace Assistencia_Técnica
             this.textBusca.TabIndex = 0;
             this.textBusca.Text = "Digite o nome aqui para buscar...";
             this.textBusca.Click += new System.EventHandler(this.textBusca_Click);
+            this.textBusca.TextChanged += new System.EventHandler(this.textBusca_TextChanged);
             this.textBusca.Leave += new System.EventHandler(this.textBusca_Leave);
             // 
             // botaoCadastro
@@ -198,7 +198,7 @@ namespace Assistencia_Técnica
             // 
             // Nome
             // 
-            this.Nome.DataPropertyName = "Nome";
+            this.Nome.DataPropertyName = "Nome_Cliente";
             this.Nome.FillWeight = 181.944F;
             this.Nome.HeaderText = "Nome";
             this.Nome.Name = "Nome";
@@ -206,7 +206,7 @@ namespace Assistencia_Técnica
             // 
             // RG
             // 
-            this.RG.DataPropertyName = "RG";
+            this.RG.DataPropertyName = "RG_Cliente";
             this.RG.FillWeight = 113.4989F;
             this.RG.HeaderText = "R.G";
             this.RG.Name = "RG";
@@ -214,7 +214,7 @@ namespace Assistencia_Técnica
             // 
             // CPF
             // 
-            this.CPF.DataPropertyName = "CPF";
+            this.CPF.DataPropertyName = "CPF_Cliente";
             this.CPF.FillWeight = 122.1848F;
             this.CPF.HeaderText = "CPF";
             this.CPF.Name = "CPF";
@@ -296,6 +296,7 @@ namespace Assistencia_Técnica
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel2.Controls.Add(this.labelOS);
             this.panel2.Controls.Add(this.refresh);
             this.panel2.Controls.Add(this.tableLayoutPanel1);
             this.panel2.Controls.Add(this.botaoCadastro);
@@ -305,6 +306,18 @@ namespace Assistencia_Técnica
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1078, 643);
             this.panel2.TabIndex = 1;
+            // 
+            // labelOS
+            // 
+            this.labelOS.AutoSize = true;
+            this.labelOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.labelOS.Location = new System.Drawing.Point(19, 118);
+            this.labelOS.Name = "labelOS";
+            this.labelOS.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.labelOS.Size = new System.Drawing.Size(422, 20);
+            this.labelOS.TabIndex = 8;
+            this.labelOS.Text = "Caso encontre o cliente desejado, clique em seu nome ";
+            this.labelOS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FormGerenClientes
             // 
@@ -317,9 +330,10 @@ namespace Assistencia_Técnica
             this.Name = "FormGerenClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gerenciamento de Clientes";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormGerenClientes_FormClosed);
             this.Load += new System.EventHandler(this.FormGerenClientes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -339,6 +353,8 @@ namespace Assistencia_Técnica
         private System.Windows.Forms.Button botaoCadastro;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView dataGridClientes;
+        private System.Windows.Forms.PictureBox refresh;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn RG;
@@ -349,7 +365,6 @@ namespace Assistencia_Técnica
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_Cont;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Excluir;
-        private System.Windows.Forms.PictureBox refresh;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label labelOS;
     }
 }

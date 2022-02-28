@@ -12,7 +12,6 @@ namespace Assistencia_Técnica
 {
     public partial class FormCadFuncionarios : Form
     {
-
         private bool Edicao = false;
         private int IdEdit = -1;
         private int IdEnd = -1;
@@ -20,8 +19,7 @@ namespace Assistencia_Técnica
         private Funcionario funcionario = new Funcionario();
         private Endereco endereco = new Endereco();
         private Contato contato = new Contato();
-
-        public FormCadFuncionarios(bool Edicao, DataGridViewRow cliente)
+        public FormCadFuncionarios(bool Edicao, DataGridViewRow funcionario)
         {
             InitializeComponent();
 
@@ -35,18 +33,18 @@ namespace Assistencia_Técnica
                 botaoAdd.Text = "Atualizar Dados";
 
                 //obtendo os IDs 
-                this.IdEdit = (int)cliente.Cells["ID"].Value;
-                this.IdEnd = (int)cliente.Cells["ID_End"].Value;
-                this.IdCont = (int)cliente.Cells["ID_Cont"].Value;
+                this.IdEdit = (int)funcionario.Cells["ID"].Value;
+                this.IdEnd = (int)funcionario.Cells["ID_End"].Value;
+                this.IdCont = (int)funcionario.Cells["ID_Cont"].Value;
 
                 //obtendo os dados pessoais do cliente a ser editado
-                nomeFuncionario.Text = cliente.Cells["Nome"].Value.ToString();
-                funcaoFuncionario.Text = cliente.Cells["Função"].Value.ToString();
-                rgFuncionario.Text = cliente.Cells["RG"].Value.ToString();
-                cpfFuncionario.Text = cliente.Cells["CPF"].Value.ToString();                   
+                nomeFuncionario.Text = funcionario.Cells["Nome"].Value.ToString();
+                funcaoFuncionario.Text = funcionario.Cells["Função"].Value.ToString();
+                rgFuncionario.Text = funcionario.Cells["RG"].Value.ToString();
+                cpfFuncionario.Text = funcionario.Cells["CPF"].Value.ToString();                   
 
                 //obtendo o endereço              
-                endereco.obterEndereco(cliente.Cells["Endereço"].Value.ToString());
+                endereco.obterEndereco(funcionario.Cells["Endereço"].Value.ToString());
                 logradouroFuncionario.Text = endereco.Logradouro;
                 numeroEndFuncionario.Text = endereco.Numero;
                 bairroFuncionario.Text = endereco.Bairro;
@@ -54,14 +52,13 @@ namespace Assistencia_Técnica
                 estadoFuncionario.Text = endereco.Estado;
 
                 //obtendo os telefones
-                contato.obterContato(cliente.Cells["Contato"].Value.ToString());
+                contato.obterContato(funcionario.Cells["Contato"].Value.ToString());
                 telefone1Funcionario.Text = contato.Contato1;
                 telefone2Funcionario.Text = contato.Contato2;
 
             }
 
         }
-
         private void botaoAdd_Click(object sender, EventArgs e)
         {
             if (FormsOk())
@@ -107,7 +104,10 @@ namespace Assistencia_Técnica
                 }
 
                 if (this.Edicao)
+                {
                     funcionarioDB.attFuncionario(this.IdEdit, this.IdEnd, this.IdCont, funcionario, endereco, contato);
+                    Close();
+                }
                 else
                     funcionarioDB.addFuncionario(funcionario, endereco, contato);
 
@@ -327,7 +327,7 @@ namespace Assistencia_Técnica
                     labelCPF.ForeColor = Color.Black;
                 }
 
-                telefone1Funcionario.Mask = "(00)0000-0000";
+                cpfFuncionario.Mask = "000,000,000-00";
 
             }
         }

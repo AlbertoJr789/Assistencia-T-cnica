@@ -9,10 +9,8 @@ namespace Assistencia_Técnica
     public class Contato
     {
 
-        //dados de contato
         private string contato1;
         private string contato2;
-
         public Contato obterContato(string contato)
         {          
             int posChar = 0;
