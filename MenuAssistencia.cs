@@ -34,8 +34,8 @@ namespace Assistencia_Técnica
 
         private void MenuAssistencia_Load(object sender, EventArgs e)
         {
-             timer1.Start();
-         
+            timer1.Start();
+          
         }
 
         private void timer1_Tick(object sender, EventArgs e)

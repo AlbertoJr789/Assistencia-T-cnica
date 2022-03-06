@@ -65,8 +65,32 @@
     <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
       <HintPath>packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=8.0.28.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>packages\MySql.Data.8.0.28\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -106,69 +130,71 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contato.cs" />
-    <Compile Include="Endereco.cs" />
-    <Compile Include="FormCadCliente.cs">
+    <Compile Include="Clientes\Contato.cs" />
+    <Compile Include="Clientes\Endereco.cs" />
+    <Compile Include="Clientes\FormCadCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCadCliente.Designer.cs">
+    <Compile Include="Clientes\FormCadCliente.Designer.cs">
       <DependentUpon>FormCadCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCadFuncionarios.cs">
+    <Compile Include="Funcionarios\FormCadFuncionarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCadFuncionarios.Designer.cs">
+    <Compile Include="Funcionarios\FormCadFuncionarios.Designer.cs">
       <DependentUpon>FormCadFuncionarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCadNota.cs">
+    <Compile Include="NotaServico\DadosNota.cs" />
+    <Compile Include="NotaServico\DataSetNotaObjeto.cs" />
+    <Compile Include="NotaServico\FormCadNota.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCadNota.Designer.cs">
+    <Compile Include="NotaServico\FormCadNota.Designer.cs">
       <DependentUpon>FormCadNota.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCadServicos.cs">
+    <Compile Include="Serviços\FormCadServicos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCadServicos.Designer.cs">
+    <Compile Include="Serviços\FormCadServicos.Designer.cs">
       <DependentUpon>FormCadServicos.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormGerenNota.cs">
+    <Compile Include="NotaServico\FormGerenNota.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormGerenNota.Designer.cs">
+    <Compile Include="NotaServico\FormGerenNota.Designer.cs">
       <DependentUpon>FormGerenNota.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormGerenProdutos.cs">
+    <Compile Include="Produtos\FormGerenProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormGerenProdutos.Designer.cs">
+    <Compile Include="Produtos\FormGerenProdutos.Designer.cs">
       <DependentUpon>FormGerenProdutos.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormGerenClientes.cs">
+    <Compile Include="Clientes\FormGerenClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormGerenClientes.Designer.cs">
+    <Compile Include="Clientes\FormGerenClientes.Designer.cs">
       <DependentUpon>FormGerenClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormGerenFuncionarios.cs">
+    <Compile Include="Funcionarios\FormGerenFuncionarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormGerenFuncionarios.Designer.cs">
+    <Compile Include="Funcionarios\FormGerenFuncionarios.Designer.cs">
       <DependentUpon>FormGerenFuncionarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCadProdutos.cs">
+    <Compile Include="Produtos\FormCadProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCadProdutos.Designer.cs">
+    <Compile Include="Produtos\FormCadProdutos.Designer.cs">
       <DependentUpon>FormCadProdutos.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormGerenServicos.cs">
+    <Compile Include="Serviços\FormGerenServicos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormGerenServicos.Designer.cs">
+    <Compile Include="Serviços\FormGerenServicos.Designer.cs">
       <DependentUpon>FormGerenServicos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Funcionario.cs" />
+    <Compile Include="Funcionarios\Funcionario.cs" />
     <Compile Include="MenuAssistencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,45 +208,47 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pessoa.cs" />
-    <Compile Include="FormPrintNota.cs">
+    <Compile Include="Clientes\Pessoa.cs" />
+    <Compile Include="NotaServico\FormPrintNota.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPrintNota.Designer.cs">
+    <Compile Include="NotaServico\FormPrintNota.Designer.cs">
       <DependentUpon>FormPrintNota.cs</DependentUpon>
     </Compile>
-    <Compile Include="Produto.cs" />
+    <Compile Include="Produtos\Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servico.cs" />
-    <EmbeddedResource Include="FormCadCliente.resx">
+    <Compile Include="Serviços\Servico.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Clientes\FormCadCliente.resx">
       <DependentUpon>FormCadCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCadFuncionarios.resx">
+    <EmbeddedResource Include="Funcionarios\FormCadFuncionarios.resx">
       <DependentUpon>FormCadFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCadNota.resx">
+    <EmbeddedResource Include="NotaServico\FormCadNota.resx">
       <DependentUpon>FormCadNota.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCadServicos.resx">
+    <EmbeddedResource Include="NotaServico\RelatorioNota.rdlc" />
+    <EmbeddedResource Include="Serviços\FormCadServicos.resx">
       <DependentUpon>FormCadServicos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormGerenNota.resx">
+    <EmbeddedResource Include="NotaServico\FormGerenNota.resx">
       <DependentUpon>FormGerenNota.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormGerenProdutos.resx">
+    <EmbeddedResource Include="Produtos\FormGerenProdutos.resx">
       <DependentUpon>FormGerenProdutos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormGerenClientes.resx">
+    <EmbeddedResource Include="Clientes\FormGerenClientes.resx">
       <DependentUpon>FormGerenClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormGerenFuncionarios.resx">
+    <EmbeddedResource Include="Funcionarios\FormGerenFuncionarios.resx">
       <DependentUpon>FormGerenFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCadProdutos.resx">
+    <EmbeddedResource Include="Produtos\FormCadProdutos.resx">
       <DependentUpon>FormCadProdutos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormGerenServicos.resx">
+    <EmbeddedResource Include="Serviços\FormGerenServicos.resx">
       <DependentUpon>FormGerenServicos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
@@ -229,7 +257,7 @@
     <EmbeddedResource Include="MenuAssistencia.resx">
       <DependentUpon>MenuAssistencia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormPrintNota.resx">
+    <EmbeddedResource Include="NotaServico\FormPrintNota.resx">
       <DependentUpon>FormPrintNota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -243,6 +271,19 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Assistencia_Técnica.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\Assistencia_Técnica.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\Contato.datasource" />
+    <None Include="Properties\DataSources\DadosNota.datasource" />
+    <None Include="Properties\DataSources\DataSetNota.datasource" />
+    <None Include="Properties\DataSources\DataSetNotaObjeto.datasource" />
+    <None Include="Properties\DataSources\Endereco.datasource" />
+    <None Include="Properties\DataSources\FormPrintNota.datasource" />
+    <None Include="Properties\DataSources\Funcionario.datasource" />
+    <None Include="Properties\DataSources\Pessoa.datasource" />
+    <None Include="Properties\DataSources\Produto.datasource" />
+    <None Include="Properties\DataSources\Servico.datasource" />
+    <None Include="Properties\DataSources\SqlServerTypes.Utilities.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -267,6 +308,21 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

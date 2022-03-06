@@ -1,0 +1,212 @@
+﻿++Solução 'Assistencia Técnica' ‎(1 de 1 projeto)
+i:{00000000-0000-0000-0000-000000000000}:Assistencia Técnica.sln
+++Assistencia Técnica
+i:{00000000-0000-0000-0000-000000000000}:Assistencia Técnica
+++Properties
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\properties\
+++Referências
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++App.config
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\app.config
+++Contato.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\contato.cs
+++Endereco.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\endereco.cs
+++FormCadCliente.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formcadcliente.cs
+++FormCadFuncionarios.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formcadfuncionarios.cs
+++FormCadNota.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formcadnota.cs
+++FormCadProdutos.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formcadprodutos.cs
+++FormCadServicos.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formcadservicos.cs
+++FormGerenClientes.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formgerenclientes.cs
+++FormGerenFuncionarios.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formgerenfuncionarios.cs
+++FormGerenNota.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formgerennota.cs
+++FormGerenProdutos.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formgerenprodutos.cs
+++FormGerenServicos.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formgerenservicos.cs
+++FormPrintNota.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formprintnota.cs
+++Funcionario.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\funcionario.cs
+++LoginForm.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\loginform.cs
+++MenuAssistencia.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\menuassistencia.cs
+++MySqlConexao.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\mysqlconexao.cs
+++packages.config
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\packages.config
+++Pessoa.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\pessoa.cs
+++Produto.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\produto.cs
+++Program.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\program.cs
+++Servico.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\servico.cs
+++AssemblyInfo.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\properties\assemblyinfo.cs
+++Resources.resx
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\properties\resources.resx
+++Settings.settings
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\properties\settings.settings
+++BouncyCastle.Crypto
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++Google.Protobuf
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++K4os.Compression.LZ4
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++K4os.Compression.LZ4.Streams
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++K4os.Hash.xxHash
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++Microsoft.CSharp
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++MySql.Data
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++PdfSharp
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++PdfSharp.Charting
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Buffers
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.ComponentModel
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.ComponentModel.DataAnnotations
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Configuration
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Configuration.Install
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Core
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Data
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Data.DataSetExtensions
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Deployment
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Drawing
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Management
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Memory
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Net.Http
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Numerics
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Numerics.Vectors
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Runtime.CompilerServices.Unsafe
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Transactions
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Windows.Forms
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Xml
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++System.Xml.Linq
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++Ubiety.Dns.Core
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++ZstdNet
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++FormCadCliente.Designer.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formcadcliente.designer.cs
+++FormCadCliente.resx
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formcadcliente.resx
+++FormCadFuncionarios.Designer.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formcadfuncionarios.designer.cs
+++FormCadFuncionarios.resx
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formcadfuncionarios.resx
+++FormCadNota.Designer.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formcadnota.designer.cs
+++FormCadNota.resx
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formcadnota.resx
+++FormCadProdutos.Designer.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formcadprodutos.designer.cs
+++FormCadProdutos.resx
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formcadprodutos.resx
+++FormCadServicos.Designer.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formcadservicos.designer.cs
+++FormCadServicos.resx
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formcadservicos.resx
+++FormGerenClientes.Designer.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formgerenclientes.designer.cs
+++FormGerenClientes.resx
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formgerenclientes.resx
+++FormGerenFuncionarios.Designer.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formgerenfuncionarios.designer.cs
+++FormGerenFuncionarios.resx
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formgerenfuncionarios.resx
+++FormGerenNota.Designer.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formgerennota.designer.cs
+++FormGerenNota.resx
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formgerennota.resx
+++FormGerenProdutos.Designer.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formgerenprodutos.designer.cs
+++FormGerenProdutos.resx
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formgerenprodutos.resx
+++FormGerenServicos.Designer.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formgerenservicos.designer.cs
+++FormGerenServicos.resx
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formgerenservicos.resx
+++FormPrintNota.Designer.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formprintnota.designer.cs
+++FormPrintNota.resx
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\formprintnota.resx
+++LoginForm.Designer.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\loginform.designer.cs
+++LoginForm.resx
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\loginform.resx
+++MenuAssistencia.Designer.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\menuassistencia.designer.cs
+++MenuAssistencia.resx
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\menuassistencia.resx
+++Resources.Designer.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\properties\resources.designer.cs
+++Settings.Designer.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\properties\settings.designer.cs
+++Microsoft.SqlServer.Types
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++SqlServerTypes
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\sqlservertypes\
+++readme.htm
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\sqlservertypes\readme.htm
+++Loader.cs
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\sqlservertypes\loader.cs
+++x86
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\sqlservertypes\x86\
+++msvcr120.dll
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\sqlservertypes\x86\msvcr120.dll
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\sqlservertypes\x64\msvcr120.dll
+++SqlServerSpatial140.dll
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\sqlservertypes\x86\sqlserverspatial140.dll
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\sqlservertypes\x64\sqlserverspatial140.dll
+++x64
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:d:\jr\códigos\c#\assistencia técnica\sqlservertypes\x64\
+++Microsoft.ReportViewer.Common
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++Microsoft.ReportViewer.DataVisualization
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++Microsoft.ReportViewer.Design
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++Microsoft.ReportViewer.ProcessingObjectModel
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++Microsoft.ReportViewer.WinForms
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++Microsoft.ReportViewer.WebDesign
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:
+++Microsoft.ReportViewer.WebForms
+i:{31684235-40c1-49ba-9866-682c4a7f3a4a}:

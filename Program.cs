@@ -20,7 +20,6 @@ namespace Assistencia_Técnica
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
             
-
         }
 
     }
