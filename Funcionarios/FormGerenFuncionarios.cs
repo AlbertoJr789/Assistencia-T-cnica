@@ -96,7 +96,7 @@ namespace Assistencia_Técnica
             {
                 if (pesquisaOS)
                 {
-                    cadOS.dadosOS(dataGridFuncionarios.Rows[e.RowIndex], "funcionario");
+                    cadOS.dadosNota(dataGridFuncionarios.Rows[e.RowIndex], "funcionario");
                     Close();
                 }
                 else //abre o perfil do funcionario

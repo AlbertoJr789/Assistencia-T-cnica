@@ -30,40 +30,41 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGerenNota));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.refresh = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridClientes = new System.Windows.Forms.DataGridView();
+            this.dataGridNotas = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeFuncionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Produtos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Servicos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Observacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_Funcionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Acrescimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Visualizar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Excluir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.botaoCadastro = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBusca = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Funcionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Produtos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Servicos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Preço = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_Cli = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_Fun = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.obs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.acres = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Visualizar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Excluir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridNotas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -98,6 +99,7 @@
             this.refresh.TabIndex = 5;
             this.refresh.TabStop = false;
             this.toolTip1.SetToolTip(this.refresh, "Atualizar Tabela");
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -107,7 +109,7 @@
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.dataGridClientes, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridNotas, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(24, 139);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -115,40 +117,198 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1040, 488);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
-            // dataGridClientes
+            // dataGridNotas
             // 
-            this.dataGridClientes.AllowUserToAddRows = false;
-            this.dataGridClientes.AllowUserToDeleteRows = false;
-            this.dataGridClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridClientes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridClientes.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridNotas.AllowUserToAddRows = false;
+            this.dataGridNotas.AllowUserToDeleteRows = false;
+            this.dataGridNotas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridNotas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridNotas.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridNotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridNotas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.Data,
-            this.Cliente,
-            this.Funcionario,
+            this.NomeCliente,
+            this.NomeFuncionario,
             this.Produtos,
             this.Servicos,
-            this.Preço,
-            this.ID_Cli,
-            this.ID_Fun,
-            this.obs,
-            this.desc,
-            this.acres,
+            this.Observacoes,
+            this.Valor,
+            this.ID_Cliente,
+            this.ID_Funcionario,
+            this.Desconto,
+            this.Acrescimo,
             this.Visualizar,
             this.Editar,
             this.Excluir});
-            this.dataGridClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridClientes.GridColor = System.Drawing.Color.Silver;
-            this.dataGridClientes.Location = new System.Drawing.Point(3, 3);
-            this.dataGridClientes.MultiSelect = false;
-            this.dataGridClientes.Name = "dataGridClientes";
-            this.dataGridClientes.ReadOnly = true;
-            this.dataGridClientes.RowHeadersVisible = false;
-            this.dataGridClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridClientes.Size = new System.Drawing.Size(1034, 482);
-            this.dataGridClientes.TabIndex = 0;
+            this.dataGridNotas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridNotas.GridColor = System.Drawing.Color.Silver;
+            this.dataGridNotas.Location = new System.Drawing.Point(3, 3);
+            this.dataGridNotas.MultiSelect = false;
+            this.dataGridNotas.Name = "dataGridNotas";
+            this.dataGridNotas.ReadOnly = true;
+            this.dataGridNotas.RowHeadersVisible = false;
+            this.dataGridNotas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridNotas.Size = new System.Drawing.Size(1034, 482);
+            this.dataGridNotas.TabIndex = 0;
+            this.dataGridNotas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridNotas_CellClick);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.FillWeight = 61.83927F;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Data
+            // 
+            this.Data.DataPropertyName = "Data";
+            this.Data.FillWeight = 109.5589F;
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
+            // 
+            // NomeCliente
+            // 
+            this.NomeCliente.DataPropertyName = "NomeCliente";
+            this.NomeCliente.FillWeight = 135.2157F;
+            this.NomeCliente.HeaderText = "Cliente";
+            this.NomeCliente.Name = "NomeCliente";
+            this.NomeCliente.ReadOnly = true;
+            // 
+            // NomeFuncionario
+            // 
+            this.NomeFuncionario.DataPropertyName = "NomeFuncionario";
+            this.NomeFuncionario.FillWeight = 119.1339F;
+            this.NomeFuncionario.HeaderText = "Funcionário Responsável";
+            this.NomeFuncionario.Name = "NomeFuncionario";
+            this.NomeFuncionario.ReadOnly = true;
+            // 
+            // Produtos
+            // 
+            this.Produtos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Produtos.DataPropertyName = "Produtos";
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Produtos.DefaultCellStyle = dataGridViewCellStyle25;
+            this.Produtos.FillWeight = 145.5635F;
+            this.Produtos.HeaderText = "Produtos";
+            this.Produtos.Name = "Produtos";
+            this.Produtos.ReadOnly = true;
+            this.Produtos.Width = 74;
+            // 
+            // Servicos
+            // 
+            this.Servicos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Servicos.DataPropertyName = "Servicos";
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Servicos.DefaultCellStyle = dataGridViewCellStyle26;
+            this.Servicos.FillWeight = 133.1873F;
+            this.Servicos.HeaderText = "Serviços";
+            this.Servicos.Name = "Servicos";
+            this.Servicos.ReadOnly = true;
+            this.Servicos.Width = 73;
+            // 
+            // Observacoes
+            // 
+            this.Observacoes.DataPropertyName = "Observacoes";
+            this.Observacoes.FillWeight = 105.8004F;
+            this.Observacoes.HeaderText = "Observações";
+            this.Observacoes.Name = "Observacoes";
+            this.Observacoes.ReadOnly = true;
+            // 
+            // Valor
+            // 
+            this.Valor.DataPropertyName = "Valor";
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle27;
+            this.Valor.FillWeight = 68.22282F;
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
+            this.Valor.ReadOnly = true;
+            // 
+            // ID_Cliente
+            // 
+            this.ID_Cliente.DataPropertyName = "ID_Cliente";
+            this.ID_Cliente.HeaderText = "";
+            this.ID_Cliente.Name = "ID_Cliente";
+            this.ID_Cliente.ReadOnly = true;
+            this.ID_Cliente.Visible = false;
+            // 
+            // ID_Funcionario
+            // 
+            this.ID_Funcionario.DataPropertyName = "ID_Funcionario";
+            this.ID_Funcionario.HeaderText = "";
+            this.ID_Funcionario.Name = "ID_Funcionario";
+            this.ID_Funcionario.ReadOnly = true;
+            this.ID_Funcionario.Visible = false;
+            // 
+            // Desconto
+            // 
+            this.Desconto.DataPropertyName = "Desconto";
+            this.Desconto.HeaderText = "";
+            this.Desconto.Name = "Desconto";
+            this.Desconto.ReadOnly = true;
+            this.Desconto.Visible = false;
+            // 
+            // Acrescimo
+            // 
+            this.Acrescimo.DataPropertyName = "Acrescimo";
+            this.Acrescimo.HeaderText = "";
+            this.Acrescimo.Name = "Acrescimo";
+            this.Acrescimo.ReadOnly = true;
+            this.Acrescimo.Visible = false;
+            // 
+            // Visualizar
+            // 
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.Goldenrod;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.White;
+            this.Visualizar.DefaultCellStyle = dataGridViewCellStyle28;
+            this.Visualizar.FillWeight = 90.3315F;
+            this.Visualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Visualizar.HeaderText = "";
+            this.Visualizar.Name = "Visualizar";
+            this.Visualizar.ReadOnly = true;
+            this.Visualizar.Text = "Visualizar";
+            this.Visualizar.UseColumnTextForButtonValue = true;
+            // 
+            // Editar
+            // 
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.White;
+            this.Editar.DefaultCellStyle = dataGridViewCellStyle29;
+            this.Editar.FillWeight = 76.7554F;
+            this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Editar.HeaderText = "";
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Text = "Editar";
+            this.Editar.UseColumnTextForButtonValue = true;
+            // 
+            // Excluir
+            // 
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.White;
+            this.Excluir.DefaultCellStyle = dataGridViewCellStyle30;
+            this.Excluir.FillWeight = 74.38234F;
+            this.Excluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Excluir.HeaderText = "";
+            this.Excluir.Name = "Excluir";
+            this.Excluir.ReadOnly = true;
+            this.Excluir.Text = "Excluir";
+            this.Excluir.UseColumnTextForButtonValue = true;
             // 
             // botaoCadastro
             // 
@@ -181,12 +341,15 @@
             // textBusca
             // 
             this.textBusca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBusca.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.textBusca.ForeColor = System.Drawing.Color.Gray;
             this.textBusca.Location = new System.Drawing.Point(766, 66);
             this.textBusca.Name = "textBusca";
             this.textBusca.Size = new System.Drawing.Size(212, 20);
             this.textBusca.TabIndex = 0;
             this.textBusca.Text = "Digite o nome do cliente aqui para buscar...";
+            this.textBusca.TextChanged += new System.EventHandler(this.textBusca_TextChanged);
+            this.textBusca.Enter += new System.EventHandler(this.textBusca_Enter);
+            this.textBusca.Leave += new System.EventHandler(this.textBusca_Leave);
             // 
             // label1
             // 
@@ -209,152 +372,6 @@
             this.panel1.Size = new System.Drawing.Size(1102, 755);
             this.panel1.TabIndex = 2;
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.FillWeight = 58.44897F;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Data
-            // 
-            this.Data.DataPropertyName = "Data";
-            this.Data.FillWeight = 103.5524F;
-            this.Data.HeaderText = "Data";
-            this.Data.Name = "Data";
-            this.Data.ReadOnly = true;
-            // 
-            // Cliente
-            // 
-            this.Cliente.DataPropertyName = "NomeCliente";
-            this.Cliente.FillWeight = 127.8026F;
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            this.Cliente.ReadOnly = true;
-            // 
-            // Funcionario
-            // 
-            this.Funcionario.DataPropertyName = "NomeFuncionario";
-            this.Funcionario.FillWeight = 112.6025F;
-            this.Funcionario.HeaderText = "Funcionário Responsável";
-            this.Funcionario.Name = "Funcionario";
-            this.Funcionario.ReadOnly = true;
-            // 
-            // Produtos
-            // 
-            this.Produtos.DataPropertyName = "Produtos";
-            this.Produtos.FillWeight = 137.5831F;
-            this.Produtos.HeaderText = "Produtos";
-            this.Produtos.Name = "Produtos";
-            this.Produtos.ReadOnly = true;
-            // 
-            // Servicos
-            // 
-            this.Servicos.DataPropertyName = "Servicos";
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Servicos.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Servicos.FillWeight = 125.8854F;
-            this.Servicos.HeaderText = "Serviços";
-            this.Servicos.Name = "Servicos";
-            this.Servicos.ReadOnly = true;
-            // 
-            // Preço
-            // 
-            this.Preço.DataPropertyName = "Valor";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Preço.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Preço.FillWeight = 125.8854F;
-            this.Preço.HeaderText = "Valor";
-            this.Preço.Name = "Preço";
-            this.Preço.ReadOnly = true;
-            // 
-            // ID_Cli
-            // 
-            this.ID_Cli.DataPropertyName = "ID_Cliente";
-            this.ID_Cli.HeaderText = "";
-            this.ID_Cli.Name = "ID_Cli";
-            this.ID_Cli.ReadOnly = true;
-            this.ID_Cli.Visible = false;
-            // 
-            // ID_Fun
-            // 
-            this.ID_Fun.DataPropertyName = "ID_Funcionario";
-            this.ID_Fun.HeaderText = "";
-            this.ID_Fun.Name = "ID_Fun";
-            this.ID_Fun.ReadOnly = true;
-            this.ID_Fun.Visible = false;
-            // 
-            // obs
-            // 
-            this.obs.DataPropertyName = "Observacoes";
-            this.obs.HeaderText = "";
-            this.obs.Name = "obs";
-            this.obs.ReadOnly = true;
-            this.obs.Visible = false;
-            // 
-            // desc
-            // 
-            this.desc.DataPropertyName = "Desconto";
-            this.desc.HeaderText = "";
-            this.desc.Name = "desc";
-            this.desc.ReadOnly = true;
-            this.desc.Visible = false;
-            // 
-            // acres
-            // 
-            this.acres.DataPropertyName = "Acrescimo";
-            this.acres.HeaderText = "";
-            this.acres.Name = "acres";
-            this.acres.ReadOnly = true;
-            this.acres.Visible = false;
-            // 
-            // Visualizar
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Visualizar.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Visualizar.FillWeight = 85.37913F;
-            this.Visualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Visualizar.HeaderText = "";
-            this.Visualizar.Name = "Visualizar";
-            this.Visualizar.ReadOnly = true;
-            this.Visualizar.Text = "Visualizar";
-            // 
-            // Editar
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.Editar.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Editar.FillWeight = 72.54733F;
-            this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Editar.HeaderText = "";
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Text = "Editar";
-            this.Editar.UseColumnTextForButtonValue = true;
-            // 
-            // Excluir
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            this.Excluir.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Excluir.FillWeight = 70.30437F;
-            this.Excluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Excluir.HeaderText = "";
-            this.Excluir.Name = "Excluir";
-            this.Excluir.ReadOnly = true;
-            this.Excluir.Text = "Excluir";
-            this.Excluir.UseColumnTextForButtonValue = true;
-            // 
             // FormGerenNota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,11 +383,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gerenciamento de Notas de Serviço";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormGerenOS_FormClosed);
+            this.Load += new System.EventHandler(this.FormGerenNota_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridNotas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -384,7 +402,7 @@
         private System.Windows.Forms.PictureBox refresh;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridView dataGridClientes;
+        private System.Windows.Forms.DataGridView dataGridNotas;
         private System.Windows.Forms.Button botaoCadastro;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBusca;
@@ -392,16 +410,16 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Funcionario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomeCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomeFuncionario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Produtos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Servicos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Preço;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Cli;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Fun;
-        private System.Windows.Forms.DataGridViewTextBoxColumn obs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn desc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn acres;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Observacoes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Funcionario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Desconto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Acrescimo;
         private System.Windows.Forms.DataGridViewButtonColumn Visualizar;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Excluir;

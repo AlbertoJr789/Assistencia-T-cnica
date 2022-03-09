@@ -15,7 +15,7 @@ namespace Assistencia_Técnica
     {
 
         private bool Edicao = false;
-        private DataGridViewRow OS = null;
+        private DataGridViewRow Nota = null;
 
         //instanciando as classes
         Pessoa cliente = new Pessoa();
@@ -31,14 +31,14 @@ namespace Assistencia_Técnica
         List<Produto> produtos = new List<Produto>();
         List<Servico> servicos = new List<Servico>();
 
-        public FormCadNota(bool Edicao, DataGridViewRow OS)
+        public FormCadNota(bool Edicao, DataGridViewRow Nota)
         {
             InitializeComponent();
 
             if (Edicao)
             {
                 this.Edicao = true;
-                this.OS = OS;
+                this.Nota = Nota;
             }
 
         }
@@ -58,13 +58,117 @@ namespace Assistencia_Técnica
 
             if (Edicao)
             {
+                button2.Text = "Atualizar Dados";
 
+                dataEntrada.Text = Nota.Cells["Data"].Value.ToString();
 
+                //obtendo os dados do cliente do banco de dados
+                MySqlConexao conexaoDB = new MySqlConexao();
 
+                conexaoDB.ClienteNota(Nota.Cells["NomeCliente"].Value.ToString(), ref cliente, ref endCli, ref conCli);
+                nomeCliente.Text = cliente.Nome;
+                labelNomeCli.ForeColor = Color.Black;
 
+                rgCliente.Text = cliente.RG;
+                rgCliente.BackColor = Color.LightGray;
 
+                cpfCliente.Text = cliente.CPF;
+                cpfCliente.BackColor = Color.LightGray;
+
+                //inicializando os valores das text boxes com os dados do cliente selecionado
+                logCli.Text = endCli.Logradouro;
+                logCli.BackColor = Color.LightGray;
+
+                numCli.Text = endCli.Numero;
+                numCli.BackColor = Color.LightGray;
+
+                bairroCli.Text = endCli.Bairro;
+                bairroCli.BackColor = Color.LightGray;
+
+                cidCli.Text = endCli.Cidade;
+                cidCli.BackColor = Color.LightGray;
+
+                estadoCli.Text = endCli.Estado;
+                estadoCli.BackColor = Color.LightGray;
+
+                //obtendo os dados do funcionario
+                conexaoDB.FuncionariosNota(Nota.Cells["NomeFuncionario"].Value.ToString(), ref funcionario, ref endFun, ref conFun);
+
+                labelNomeFun.ForeColor = Color.Black;
+
+                nomeFun.Text = funcionario.Nome;
+                rgFun.Text = funcionario.RG;
+                rgFun.BackColor = Color.LightGray;
+
+                cpfFun.Text = funcionario.CPF;
+                cpfFun.BackColor = Color.LightGray;
+
+                funcao.Text = funcionario.Funcao;
+                funcao.BackColor = Color.LightGray;
+
+                //inicializando os valores das text boxes com os dados do cliente selecionado
+                logFun.Text = endFun.Logradouro;
+                logFun.BackColor = Color.LightGray;
+
+                numFun.Text = endFun.Numero;
+                numFun.BackColor = Color.LightGray;
+
+                bairroFun.Text = endFun.Bairro;
+                bairroFun.BackColor = Color.LightGray;
+
+                cidFun.Text = endFun.Cidade;
+                cidFun.BackColor = Color.LightGray;
+
+                estFun.Text = endFun.Estado;
+                estFun.BackColor = Color.LightGray;
+
+                conexaoDB.tabelaNota(ref tabelaNota, Convert.ToInt32(Nota.Cells["ID"].Value.ToString()));
+
+                if (Nota.Cells["Desconto"].Value.ToString().Contains("%"))
+                {
+                    descontoPorc.Text = Nota.Cells["Desconto"].Value.ToString();
+                    descontoPorc.ReadOnly = false;
+
+                    descontoRS.BackColor = Color.LightGray;
+                    acrescimoPorc.BackColor = Color.LightGray;
+                    acrescimoRS.BackColor = Color.LightGray;
+
+                }
+                else if(Nota.Cells["Desconto"].Value.ToString() != "R$ 0,00")
+                {
+                    descontoRS.Text = Nota.Cells["Desconto"].Value.ToString();
+                    descontoRS.ReadOnly = false;
+
+                    descontoPorc.BackColor = Color.LightGray;
+                    acrescimoPorc.BackColor = Color.LightGray;
+                    acrescimoRS.BackColor = Color.LightGray;
+
+                }
+
+                if (Nota.Cells["Acrescimo"].Value.ToString().Contains("%"))
+                {
+                    acrescimoPorc.Text = Nota.Cells["Acrescimo"].Value.ToString();
+                    acrescimoPorc.ReadOnly = false;
+
+                    descontoPorc.BackColor = Color.LightGray;
+                    descontoRS.BackColor = Color.LightGray;
+                    acrescimoRS.BackColor = Color.LightGray;
+
+                }
+                else if (Nota.Cells["Acrescimo"].Value.ToString() != "R$ 0,00")
+                {
+                    acrescimoRS.Text = Nota.Cells["Acrescimo"].Value.ToString();
+                    acrescimoRS.ReadOnly = false;
+
+                    descontoPorc.BackColor = Color.LightGray;
+                    descontoRS.BackColor = Color.LightGray;
+                    acrescimoPorc.BackColor = Color.LightGray;
+
+                }
+
+                valorOS.Text = Nota.Cells["Valor"].Value.ToString();
+                observacoes.Text = Nota.Cells["Observacoes"].Value.ToString();
             }
-
 
         }
 
@@ -224,7 +328,7 @@ namespace Assistencia_Técnica
             menuFuncionarios.ShowDialog();
         }
 
-        public void dadosOS(DataGridViewRow dados, string tipo)
+        public void dadosNota(DataGridViewRow dados, string tipo)
         {
             switch (tipo)
             {
@@ -330,7 +434,7 @@ namespace Assistencia_Técnica
                         linhaProduto["Estoque"] = novo.Estoque;
                         linhaProduto["Preco"] = dados.Cells["Preco"].Value.ToString();
                         linhaProduto["PrecoTotal"] = (novo.Preco * novo.Quantidade).ToString("C");
-
+                         
                         tabelaNota.Rows.Add(linhaProduto);
                         attPrecoOS();
                         break;
@@ -457,10 +561,25 @@ namespace Assistencia_Técnica
         {
             if (FormsOk())
             {
+                if (!this.Edicao)
+                {
                 FormPrintNota impressaoNota = new FormPrintNota(cliente,endCli,conCli,funcionario,
-                    endFun,conFun, tabelaNota, dataEntrada.Text,dataSaida.Text,descontoRS.Text,
-                    descontoPorc.Text,acrescimoRS.Text,acrescimoPorc.Text,valorOS.Text,observacoes.Text,this);
+                    endFun,conFun, tabelaNota, dataEntrada.Text,descontoRS.Text,
+                    descontoPorc.Text,acrescimoRS.Text,acrescimoPorc.Text,valorOS.Text,observacoes.Text,this,false);
                 impressaoNota.ShowDialog();
+
+                }
+                else
+                {
+                    string desconto = obterDesconto(descontoRS.Text,descontoPorc.Text)
+                    ,acrescimo = obterAcrescimo(acrescimoRS.Text,acrescimoPorc.Text);
+
+                    MySqlConexao conexaoDB = new MySqlConexao();
+                    conexaoDB.attNota(Convert.ToInt32(Nota.Cells["ID"].Value.ToString()),
+                        cliente,endCli,conCli,funcionario,endFun,conFun,tabelaNota,dataEntrada.Text,
+                        desconto,acrescimo,valorOS.Text,observacoes.Text);
+                    Close();
+                }
                
             }
             else
@@ -987,7 +1106,20 @@ namespace Assistencia_Técnica
             }
             
         }
-        
+
+
+        private string obterDesconto(string dRS, string dP)
+        {
+            return (dP == "") ? dRS : dP;
+
+        }
+
+        private string obterAcrescimo(string aRS, string aP)
+        {
+
+            return (aP == "") ? aRS : aP;
+        }
+
         /*
         private void dataSaida_Validated(object sender, EventArgs e)
         {

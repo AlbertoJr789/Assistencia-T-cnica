@@ -37,17 +37,17 @@
             this.refresh = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridServicos = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Excluir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.botaoCadastro = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBusca = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Excluir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -144,64 +144,6 @@
             this.dataGridServicos.TabIndex = 0;
             this.dataGridServicos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridServicos_CellClick);
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID_Servico";
-            this.ID.FillWeight = 51.90735F;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Descrição
-            // 
-            this.Descrição.DataPropertyName = "Nome_Servico";
-            this.Descrição.FillWeight = 181.944F;
-            this.Descrição.HeaderText = "Descrição";
-            this.Descrição.Name = "Descrição";
-            this.Descrição.ReadOnly = true;
-            // 
-            // Preco
-            // 
-            this.Preco.DataPropertyName = "Preco_Servico";
-            this.Preco.FillWeight = 113.4989F;
-            this.Preco.HeaderText = "Preço";
-            this.Preco.Name = "Preco";
-            this.Preco.ReadOnly = true;
-            // 
-            // Editar
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.Editar.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Editar.FillWeight = 64.42782F;
-            this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Editar.HeaderText = "";
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Text = "Editar";
-            this.Editar.UseColumnTextForButtonValue = true;
-            // 
-            // Excluir
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.Excluir.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Excluir.FillWeight = 62.43589F;
-            this.Excluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Excluir.HeaderText = "";
-            this.Excluir.Name = "Excluir";
-            this.Excluir.ReadOnly = true;
-            this.Excluir.Text = "Excluir";
-            this.Excluir.UseColumnTextForButtonValue = true;
-            // 
             // botaoCadastro
             // 
             this.botaoCadastro.BackColor = System.Drawing.SystemColors.Highlight;
@@ -263,6 +205,64 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Informações dos Serviços";
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.FillWeight = 51.90735F;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Descrição
+            // 
+            this.Descrição.DataPropertyName = "Nome_Servico";
+            this.Descrição.FillWeight = 181.944F;
+            this.Descrição.HeaderText = "Descrição";
+            this.Descrição.Name = "Descrição";
+            this.Descrição.ReadOnly = true;
+            // 
+            // Preco
+            // 
+            this.Preco.DataPropertyName = "Preco_Servico";
+            this.Preco.FillWeight = 113.4989F;
+            this.Preco.HeaderText = "Preço";
+            this.Preco.Name = "Preco";
+            this.Preco.ReadOnly = true;
+            // 
+            // Editar
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.Editar.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Editar.FillWeight = 64.42782F;
+            this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Editar.HeaderText = "";
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Text = "Editar";
+            this.Editar.UseColumnTextForButtonValue = true;
+            // 
+            // Excluir
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.Excluir.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Excluir.FillWeight = 62.43589F;
+            this.Excluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Excluir.HeaderText = "";
+            this.Excluir.Name = "Excluir";
+            this.Excluir.ReadOnly = true;
+            this.Excluir.Text = "Excluir";
+            this.Excluir.UseColumnTextForButtonValue = true;
+            // 
             // FormGerenServicos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -299,11 +299,11 @@
         private System.Windows.Forms.TextBox textBusca;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelOS;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descrição;
         private System.Windows.Forms.DataGridViewTextBoxColumn Preco;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Excluir;
-        private System.Windows.Forms.Label labelOS;
     }
 }

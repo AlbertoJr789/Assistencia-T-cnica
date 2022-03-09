@@ -110,7 +110,7 @@ namespace Assistencia_Técnica
             {
                 if (pesquisaOS)
                 {                    
-                    cadOS.dadosOS(dataGridClientes.Rows[e.RowIndex], "cliente");
+                    cadOS.dadosNota(dataGridClientes.Rows[e.RowIndex], "cliente");
                     Close();
                 }
                 else //abre o perfil do cliente

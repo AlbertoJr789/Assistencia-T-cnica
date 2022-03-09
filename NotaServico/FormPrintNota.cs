@@ -17,17 +17,17 @@ namespace Assistencia_Técnica
         public DataSetNotaObjeto dataSetObj = new DataSetNotaObjeto();
         private DataTable tabelaDataSet = new DataTable();
         private bool salvou = false;
+        private bool visualizar = false;
         private FormCadNota cadNota;
 
         public FormPrintNota(Pessoa cliente, Endereco endCli, Contato conCli,
             Funcionario funcionario, Endereco endFun, Contato conFun, DataTable
             tabelaNota, string data, string dRS,string dP,string aRS,string aP,
-            string valor,string obs,FormCadNota cadNota)
+            string valor,string obs,FormCadNota cadNota,bool visualizar)
         {
             InitializeComponent();
-                   
-            //obtendo todas as informações            
-            this.dadosNota.ID = 1;
+
+            this.visualizar = this.salvou =  visualizar;
             this.dadosNota.Data = data;
         
             this.dadosNota.cliente = cliente;
@@ -46,7 +46,6 @@ namespace Assistencia_Técnica
             this.dadosNota.observacoes = obs;
 
             //montando a tabela de dados.
-
             this.tabelaDataSet.Columns.Add("ID");
             this.tabelaDataSet.Columns.Add("Descricao");
             this.tabelaDataSet.Columns.Add("Quantidade");
@@ -79,8 +78,7 @@ namespace Assistencia_Técnica
             this.impressaoNota.LocalReport.DataSources.Add(source);
 
             ReportParameter[] parametros = new ReportParameter[]
-            {
-                new ReportParameter("IDNota",dadosNota.ID.ToString()),
+            {                
                 new ReportParameter("dataEntrada",this.dadosNota.Data),
                 new ReportParameter("nomeCli",this.dadosNota.cliente.Nome),
                 new ReportParameter("ID_Cli",this.dadosNota.cliente.ID.ToString()),
@@ -109,16 +107,21 @@ namespace Assistencia_Técnica
             this.impressaoNota.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
             this.impressaoNota.RefreshReport();
 
+            if (this.visualizar)
+            {
+                emitirESalvarToolStripMenuItem.Visible = false;
+
+            }
+
         }
 
         private void emitirESalvarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MySqlConexao conexaoDB = new MySqlConexao();
-            salvou = conexaoDB.salvarNota(dadosNota);
+            this.salvou = conexaoDB.salvarNota(dadosNota);
 
-            if (salvou)
+            if (this.salvou)
             {
-                MessageBox.Show("Nota de Serviço Salva com Sucesso !", "Gravação de Nota", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cadNota.Close();
             }
             else

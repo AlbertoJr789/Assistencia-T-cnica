@@ -213,21 +213,21 @@ namespace Assistencia_Técnica
 
 
         }
-        public void mostrarNotas(string cmd, DataGridView dgNotas)
+        public DataTable mostrarNotas(string cmd)
         {
             MySqlDataReader leitor = null;
 
             try
             {
-
-                MySqlCommand cmdNota = new MySqlCommand(cmd, conexao);
-                leitor = cmdNota.ExecuteReader();
+                //montado tabela de dados
                 DataTable tblNota = new DataTable();
 
                 tblNota.Columns.Add("ID");
                 tblNota.Columns.Add("Data");
                 tblNota.Columns.Add("NomeCliente");
+                tblNota.Columns.Add("ID_Cliente");
                 tblNota.Columns.Add("NomeFuncionario");
+                tblNota.Columns.Add("ID_Funcionario");
                 tblNota.Columns.Add("Produtos");
                 tblNota.Columns.Add("Servicos");
                 tblNota.Columns.Add("Valor");
@@ -235,20 +235,88 @@ namespace Assistencia_Técnica
                 tblNota.Columns.Add("Acrescimo");
                 tblNota.Columns.Add("Observacoes");
 
+                // instanciando primeiro script SQL
+                MySqlCommand cmdNota = new MySqlCommand(cmd, conexao);
+                leitor = cmdNota.ExecuteReader();
+            
+                //lendo as notas de serviço
                 while (leitor.Read())
                 {
                     DataRow novo = tblNota.NewRow();
 
                     novo["ID"] = leitor["ID_Nota_Servico"].ToString();
-                    novo["Data"] = leitor["Data"].ToString();
+                    novo["Data"] = leitor["Data"].ToString().Substring(0,leitor["Data"].ToString().IndexOf(" "));
+                    novo["ID_Cliente"] = leitor["ID_Cliente"].ToString();
+                    novo["ID_Funcionario"] = leitor["ID_Funcionario"].ToString();
+                    decimal valorNota = Convert.ToDecimal(leitor["Valor_Nota"].ToString());
+                    novo["Valor"] = valorNota.ToString("C");
+                    novo["Desconto"] = leitor["Desconto"].ToString();
+                    novo["Acrescimo"] = leitor["Acrescimo"].ToString();
+                    novo["Observacoes"] = leitor["Observacoes"].ToString();
 
-
+                    tblNota.Rows.Add(novo);
 
                 }
 
+                leitor.Dispose();
 
+                cmd = "SELECT Nome_Cliente FROM cliente WHERE ID_Cliente = @idC;\n" +
+                   "SELECT Nome_Funcionario FROM funcionario WHERE ID_Funcionario = @idF;\n" +
+                   "SELECT Nome_Produto,Estoque,ID_Produto,Quantidade_Produto,Preco_Unitario" +
+                   " FROM produtos_nota JOIN produto ON produto.ID = produtos_nota.ID_Produto" +
+                   " WHERE ID_Nota_Produto = @idN;\n" +
+                   "SELECT Nome_Servico,ID_Servico,Quantidade_Servico,Preco_Unitario" +
+                   " FROM servicos_nota JOIN servico ON servico.ID = servicos_nota.ID_Servico" +
+                   " WHERE ID_Nota_Servico = @idN;";
+                cmdNota.CommandText = cmd;
+                string nl = Environment.NewLine;
 
-               leitor.Close();
+                //lendo o cliente,funcionario e produtos/ servicos de cada Nota
+                foreach (DataRow linha in tblNota.Rows)
+                {                  
+                    cmdNota.Parameters.AddWithValue("@idC", Convert.ToInt32(linha["ID_Cliente"].ToString()));
+                    cmdNota.Parameters.AddWithValue("@idF", Convert.ToInt32(linha["ID_Funcionario"].ToString()));
+                    cmdNota.Parameters.AddWithValue("@idN", Convert.ToInt32(linha["ID"].ToString()));
+
+                    leitor = cmdNota.ExecuteReader();
+
+                    while(leitor.Read())
+                        linha["NomeCliente"] = leitor["Nome_Cliente"].ToString();
+
+                    leitor.NextResult();
+
+                    while(leitor.Read())
+                        linha["NomeFuncionario"] = leitor["Nome_Funcionario"].ToString();
+
+                    leitor.NextResult();
+
+                    while (leitor.Read())
+                    {
+                        decimal valorProd = Convert.ToDecimal(leitor["Preco_Unitario"].ToString());
+
+                        linha["Produtos"] += leitor["Nome_Produto"] + " " + leitor["Quantidade_Produto"] + "un"
+                          + " " + valorProd.ToString("C") + "cd" + nl;
+                                                                  
+                    }
+
+                    leitor.NextResult();
+
+                    while (leitor.Read())
+                    {
+                        decimal valorProd = Convert.ToDecimal(leitor["Preco_Unitario"].ToString());
+
+                        linha["Servicos"] += leitor["Nome_Servico"] + " " + leitor["Quantidade_Servico"] + "un"
+                          + " " + valorProd.ToString("C") + "cd" + nl;
+
+                    }
+
+                    cmdNota.Parameters.Clear();
+                    leitor.Dispose();
+                }
+                               
+                leitor.Close();
+                return tblNota;
+              
             }
             catch (MySqlException ex)
             {
@@ -258,7 +326,7 @@ namespace Assistencia_Técnica
 
             leitor.Dispose();
             leitor.Close();
-
+            return null;
         }
         public List<string> obterNomesClientesDB()
         {
@@ -453,6 +521,80 @@ namespace Assistencia_Técnica
             leitor.Dispose();
             leitor.Close();
         }
+        public void tabelaNota(ref DataTable tblNota,int ID_Nota)
+        {
+
+            MySqlDataReader leitor = null;
+
+            try
+            {
+                string cmd = 
+                   "SELECT Nome_Produto,Estoque,ID_Produto,Quantidade_Produto,Preco_Unitario" +
+                   " FROM produtos_nota JOIN produto ON produto.ID = produtos_nota.ID_Produto" +
+                   " WHERE ID_Nota_Produto = @idN;\n" +
+                   "SELECT Nome_Servico,ID_Servico,Quantidade_Servico,Preco_Unitario" +
+                   " FROM servicos_nota JOIN servico ON servico.ID = servicos_nota.ID_Servico" +
+                   " WHERE ID_Nota_Servico = @idN;";
+
+                    MySqlCommand cmdNota = new MySqlCommand(cmd, conexao);
+                                
+                    //lendo o cliente,funcionario e produtos/servicos de cada Nota
+               
+                    cmdNota.Parameters.AddWithValue("@idN", ID_Nota);
+
+                    leitor = cmdNota.ExecuteReader();
+                                               
+                    while (leitor.Read())
+                    {
+                        DataRow novo = tblNota.NewRow();
+
+                        novo["Tipo"] = "P";
+                        novo["ID"] = leitor["ID_Produto"].ToString();
+                        novo["Descricao"] = leitor["Nome_Produto"].ToString();
+                        novo["Quantidade"] = leitor["Quantidade_Produto"].ToString();
+                        int qtd = Convert.ToInt32(leitor["Quantidade_Produto"].ToString());
+                        novo["Estoque"] = leitor["Estoque"].ToString();                    
+                        decimal valorProd = Convert.ToDecimal(leitor["Preco_Unitario"].ToString());
+                        novo["Preco"] = valorProd.ToString("C");
+                        novo["PrecoTotal"] = (valorProd * qtd).ToString("C");
+
+                        tblNota.Rows.Add(novo);
+                    }
+
+                    leitor.NextResult();
+
+                    while (leitor.Read())
+                    {
+                        DataRow novo = tblNota.NewRow();
+
+                        novo["Tipo"] = "S";
+                        novo["ID"] = leitor["ID_Servico"].ToString();
+                        novo["Descricao"] = leitor["Nome_Servico"].ToString();
+                        novo["Quantidade"] = leitor["Quantidade_Servico"].ToString();
+                        int qtd = Convert.ToInt32(leitor["Quantidade_Servico"].ToString());
+                        novo["Estoque"] = "∞";
+                        decimal valorProd = Convert.ToDecimal(leitor["Preco_Unitario"].ToString());
+                        novo["Preco"] = valorProd.ToString("C");
+                        novo["PrecoTotal"] = (valorProd * qtd).ToString("C");
+
+                        tblNota.Rows.Add(novo);
+                    }
+
+                leitor.Dispose();
+                leitor.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados (Tabela Nota): " + ex);
+                leitor.Dispose();
+                leitor.Close();
+            }
+
+            leitor.Dispose();
+            leitor.Close();
+
+        }
+
         public string obterEndereco(int ID_Endereco)
         {
 
@@ -754,14 +896,14 @@ namespace Assistencia_Técnica
         {
             try
             {
-                string cmd = "INSERT INTO nota_servico (Data,ID_Cliente,ID_Funcionario,Valor_OS" +
+                string cmd = "INSERT INTO nota_servico (Data,ID_Cliente,ID_Funcionario,Valor_Nota" +
                     ",Acrescimo,Desconto,Observacoes) VALUES (@dt,@IDCli,@IDFun,@valor,@acres,@desc,@obs)";
                                       
                 MySqlCommand comando = new MySqlCommand(cmd, conexao);
 
                 DateTime dt = DateTime.Parse(dadosNota.Data);
 
-                comando.Parameters.AddWithValue("@dtS", dt.ToString("yyyy-MM-dd HH:mm:ss"));
+                comando.Parameters.AddWithValue("@dt", dt.ToString("yyyy-MM-dd HH:mm:ss"));
                 comando.Parameters.AddWithValue("@IDCli", dadosNota.cliente.ID);
                 comando.Parameters.AddWithValue("@IDFun", dadosNota.funcionario.ID);
                 comando.Parameters.AddWithValue("@valor", Convert.ToDecimal(dadosNota.valorNota.Replace("R$ ","")));
@@ -790,12 +932,13 @@ namespace Assistencia_Técnica
                     }
 
                 }
-                
-             
+
+              MessageBox.Show("Nota de Serviço Salva com Sucesso !", "Gravação de Nota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Erro de banco de dados (Serviço): " + ex.Message);
+                MessageBox.Show("Erro de banco de dados (Nota): " + ex.Message);
                 
                 return false;
             }
@@ -832,7 +975,6 @@ namespace Assistencia_Técnica
         }
         private void inserirServicoNota(DataRow servico, int ID_nota)
         {
-
             try
             {
                 string cmd = "INSERT INTO servicos_nota (ID_Nota_Servico,ID_Servico,Quantidade_Servico,Preco_Unitario)" +
@@ -853,7 +995,6 @@ namespace Assistencia_Técnica
                 MessageBox.Show("Erro de banco de dados (Serviço Nota): " + ex.Message);
                               
             }
-
 
         }
         
@@ -1018,6 +1159,68 @@ namespace Assistencia_Técnica
             }
 
         }
+        public void attNota(int ID_Nota, Pessoa cliente, Endereco endCli, Contato conCli, Funcionario funcionario,
+            Endereco endFun, Contato conFun, DataTable tabelaNota, string data,
+            string desconto, string acrescimo, string valorNota, string observacoes)
+        {
+
+            try
+            {
+                string cmd = "UPDATE nota_servico SET Data = @dt,ID_Cliente = @IDCli,ID_Funcionario = @IDFun," +
+                    "Valor_Nota = @valor,Acrescimo = @acres,Desconto = @desc,Observacoes = @obs " +
+                    "WHERE ID_Nota_Servico = @IDNota";
+
+
+                MySqlCommand comando = new MySqlCommand(cmd, conexao);
+
+                DateTime dt = DateTime.Parse(data);
+
+                comando.Parameters.AddWithValue("@IDNota", ID_Nota);
+                comando.Parameters.AddWithValue("@dt", dt.ToString("yyyy-MM-dd HH:mm:ss"));
+                comando.Parameters.AddWithValue("@IDCli", cliente.ID);
+                comando.Parameters.AddWithValue("@IDFun", funcionario.ID);
+                comando.Parameters.AddWithValue("@valor", Convert.ToDecimal(valorNota.Replace("R$ ", "")));
+                comando.Parameters.AddWithValue("@acres", acrescimo);
+                comando.Parameters.AddWithValue("@desc", desconto);
+                comando.Parameters.AddWithValue("@obs", observacoes);
+
+                comando.ExecuteNonQuery();
+
+                //excluindo os produtos e serviços antigos
+                excluirProdutoNota(ID_Nota);
+                excluirServicoNota(ID_Nota);
+
+                //inserindo produtos e serviços novos no BD
+                foreach (DataRow linha in tabelaNota.Rows)
+                {
+
+                    if (linha["Tipo"].ToString() == "P")
+                    { //se for um produto
+
+                       inserirProdutoNota(linha, ID_Nota);
+
+                    }
+                    else
+                    {// se for um serviço
+
+                        inserirServicoNota(linha, ID_Nota);
+
+                    }
+
+                }
+
+                MessageBox.Show("Nota de Serviço Atualizada com Sucesso", "Atualização de Nota de Serviço",
+                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados (Nota): " + ex.Message);
+
+            }
+
+        }
 
         //Operações de Exclusão
         public void excluirCliente(DataGridViewRow dadosCliente)
@@ -1071,7 +1274,7 @@ namespace Assistencia_Técnica
 
                 int ID = Convert.ToInt32(dadosProduto.Cells["ID"].Value.ToString());
 
-                string cmd = "DELETE FROM produto WHERE ID_Produto=" + ID;
+                string cmd = "DELETE FROM produto WHERE ID=" + ID;
                 MySqlCommand comando = new MySqlCommand(cmd, conexao);
                 comando.ExecuteNonQuery();
 
@@ -1090,7 +1293,7 @@ namespace Assistencia_Técnica
             {
                 int ID = Convert.ToInt32(dadosServico.Cells["ID"].Value.ToString());
 
-                string cmd = "DELETE FROM servico WHERE ID_Servico=" + ID;
+                string cmd = "DELETE FROM servico WHERE ID=" + ID;
                 MySqlCommand comando = new MySqlCommand(cmd, conexao);
                 comando.ExecuteNonQuery();
 
@@ -1102,6 +1305,18 @@ namespace Assistencia_Técnica
                 MessageBox.Show("Erro de banco de dados (Produto): " + ex.Message);
 
             }
+        }
+        public void excluirNota(DataGridViewRow dadosNota)
+        {
+
+
+
+
+
+
+
+
+
         }
         public void excluirEndereco(int ID)
         {
@@ -1134,6 +1349,71 @@ namespace Assistencia_Técnica
                 MessageBox.Show("Erro de banco de dados (Contato): " + ex.Message);
 
             }
+
+        }
+        public void excluirNota(int ID_Nota)
+        {
+            try
+            {
+                string cmd = "DELETE FROM nota_servico WHERE ID_Nota_Servico = @IDNota";
+
+                excluirProdutoNota(ID_Nota);
+                excluirServicoNota(ID_Nota);
+
+                MySqlCommand comando = new MySqlCommand(cmd, conexao);
+                comando.Parameters.AddWithValue("@IDNota", ID_Nota);
+
+                comando.ExecuteNonQuery();
+
+                MessageBox.Show("Nota de Serviço Excluída com Sucesso", "Remoção de Nota de Serviço",
+                    MessageBoxButtons.OK,MessageBoxIcon.Information);
+                 
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados (Produto Nota): " + ex.Message);
+
+            }
+
+        }
+        public void excluirProdutoNota(int ID_Nota)
+        {
+            try
+            {
+                string cmd = "DELETE FROM produtos_nota WHERE ID_Nota_Produto = @IDNota";
+
+                MySqlCommand comando = new MySqlCommand(cmd, conexao);
+                comando.Parameters.AddWithValue("@IDNota", ID_Nota);
+
+                comando.ExecuteNonQuery();
+                
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados (Produto Nota): " + ex.Message);
+
+            }
+
+        }
+        public void excluirServicoNota(int ID_Nota)
+        {
+            try
+            {
+                string cmd = "DELETE FROM servicos_nota WHERE ID_Nota_Servico = @IDNota";
+
+                MySqlCommand comando = new MySqlCommand(cmd, conexao);
+                comando.Parameters.AddWithValue("@IDNota", ID_Nota);
+
+                comando.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de banco de dados (Serviço Nota): " + ex.Message);
+
+            }
+
 
         }
 

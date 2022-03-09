@@ -98,7 +98,7 @@ namespace Assistencia_Técnica
                     DataGridViewRow linha = dataGridProdutos.Rows[e.RowIndex];
                     if(Convert.ToInt32(linha.Cells["Estoque"].Value.ToString()) > 0)
                     {
-                        cadOS.dadosOS(dataGridProdutos.Rows[e.RowIndex], "produto");
+                        cadOS.dadosNota(dataGridProdutos.Rows[e.RowIndex], "produto");
                         Close();
 
                     }

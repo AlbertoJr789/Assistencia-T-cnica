@@ -96,7 +96,7 @@ namespace Assistencia_Técnica
             {
                 if (pesquisaOS && e.RowIndex >= 0)
                 {
-                    cadOS.dadosOS(dataGridServicos.Rows[e.RowIndex], "servico");
+                    cadOS.dadosNota(dataGridServicos.Rows[e.RowIndex], "servico");
                     Close();
                 }
 

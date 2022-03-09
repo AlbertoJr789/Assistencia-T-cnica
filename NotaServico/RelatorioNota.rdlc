@@ -58,9 +58,9 @@
         <ReportItems>
           <Line Name="Line5">
             <Top>0.17639cm</Top>
-            <Left>0.17831cm</Left>
+            <Left>0.65456cm</Left>
             <Height>0cm</Height>
-            <Width>20.31651cm</Width>
+            <Width>19.84026cm</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -92,9 +92,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>0.35278cm</Top>
-            <Left>0.28661cm</Left>
+            <Left>0.65456cm</Left>
             <Height>0.70459cm</Height>
-            <Width>20.1717cm</Width>
+            <Width>19.85792cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -107,10 +107,10 @@
             </Style>
           </Textbox>
           <Line Name="Line6">
-            <Top>6.54099cm</Top>
-            <Left>0.28661cm</Left>
+            <Top>3.47182cm</Top>
+            <Left>0.65456cm</Left>
             <Height>0cm</Height>
-            <Width>20.1717cm</Width>
+            <Width>19.94485cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -158,8 +158,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>6.60919cm</Top>
-            <Left>12.83507cm</Left>
+            <Top>3.54002cm</Top>
+            <Left>12.97617cm</Left>
             <Height>1.32409cm</Height>
             <Width>4.43495cm</Width>
             <ZIndex>3</ZIndex>
@@ -211,8 +211,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>6.54099cm</Top>
-            <Left>17.41113cm</Left>
+            <Top>3.47182cm</Top>
+            <Left>17.55223cm</Left>
             <Height>1.32409cm</Height>
             <Width>3.04718cm</Width>
             <ZIndex>4</ZIndex>
@@ -241,10 +241,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox23</rd:DefaultName>
-            <Top>6.61154cm</Top>
-            <Left>0.34078cm</Left>
+            <Top>3.54237cm</Top>
+            <Left>0.65456cm</Left>
             <Height>0.56562cm</Height>
-            <Width>12.35318cm</Width>
+            <Width>12.1805cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -271,10 +271,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>7.24772cm</Top>
-            <Left>0.34078cm</Left>
+            <Top>4.17855cm</Top>
+            <Left>0.65456cm</Left>
             <Height>0.58208cm</Height>
-            <Width>12.3179cm</Width>
+            <Width>12.14522cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -287,10 +287,10 @@
             </Style>
           </Textbox>
           <Line Name="Line7">
-            <Top>7.93328cm</Top>
-            <Left>0.28661cm</Left>
+            <Top>4.86411cm</Top>
+            <Left>0.65456cm</Left>
             <Height>0cm</Height>
-            <Width>20.1717cm</Width>
+            <Width>19.94485cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -302,19 +302,19 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.03434cm</Width>
+                  <Width>3.96075cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.03434cm</Width>
+                  <Width>3.96075cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.03434cm</Width>
+                  <Width>3.96075cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.03434cm</Width>
+                  <Width>3.96075cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.03434cm</Width>
+                  <Width>3.96075cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -738,9 +738,9 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
             <Top>1.38396cm</Top>
-            <Left>0.28661cm</Left>
+            <Left>0.65456cm</Left>
             <Height>1.41166cm</Height>
-            <Width>20.1717cm</Width>
+            <Width>19.80375cm</Width>
             <ZIndex>8</ZIndex>
             <Style>
               <Border>
@@ -749,13 +749,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>3.27067in</Height>
+        <Height>2.07275in</Height>
         <Style />
       </Body>
       <Width>8.2in</Width>
       <Page>
         <PageHeader>
-          <Height>9.09918cm</Height>
+          <Height>9.36376cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -763,9 +763,10 @@
               <Source>Embedded</Source>
               <Value>Untitled12</Value>
               <Sizing>Fit</Sizing>
-              <Left>0.21482cm</Left>
-              <Height>2.18474cm</Height>
-              <Width>20.28cm</Width>
+              <Top>0.42333cm</Top>
+              <Left>0.65456cm</Left>
+              <Height>1.76141cm</Height>
+              <Width>19.84026cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -779,30 +780,29 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Nota de Serviço Nº </Value>
+                      <Value>Nota de Serviço </Value>
                       <Style>
                         <FontFamily>trebuchet ms</FontFamily>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value>=Parameters!IDNota.Value</Value>
-                      <Style>
-                        <FontFamily>trebuchet ms</FontFamily>
+                        <FontSize>14pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
                 </Paragraph>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value />
+                      <Value>Contato Comercial: (37)99140-9472   </Value>
                       <Style>
                         <FontFamily>trebuchet ms</FontFamily>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
                 </Paragraph>
                 <Paragraph>
                   <TextRuns>
@@ -819,14 +819,16 @@
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox21</rd:DefaultName>
-              <Top>2.36113cm</Top>
-              <Left>0.17831cm</Left>
-              <Height>1.51722cm</Height>
-              <Width>5.65416cm</Width>
+              <Top>2.18474cm</Top>
+              <Left>0.65456cm</Left>
+              <Height>1.79944cm</Height>
+              <Width>19.80375cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -840,9 +842,9 @@
             </Textbox>
             <Line Name="Line1">
               <Top>4.01946cm</Top>
-              <Left>0.17831cm</Left>
+              <Left>0.65456cm</Left>
               <Height>0cm</Height>
-              <Width>20.28cm</Width>
+              <Width>19.80375cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -894,10 +896,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>4.12529cm</Top>
-              <Left>0.17831cm</Left>
+              <Top>4.09002cm</Top>
+              <Left>0.65456cm</Left>
               <Height>0.77515cm</Height>
-              <Width>20.31651cm</Width>
+              <Width>19.84026cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -967,9 +969,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>4.97099cm</Top>
-              <Left>0.17831cm</Left>
+              <Left>0.65456cm</Left>
               <Height>1.5093cm</Height>
-              <Width>5.37669cm</Width>
+              <Width>4.90044cm</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -1085,9 +1087,9 @@
             </Textbox>
             <Line Name="Line2">
               <Top>6.55085cm</Top>
-              <Left>0.21482cm</Left>
+              <Left>0.65456cm</Left>
               <Height>0cm</Height>
-              <Width>20.28cm</Width>
+              <Width>19.84026cm</Width>
               <ZIndex>6</ZIndex>
               <Style>
                 <Border>
@@ -1134,9 +1136,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Top>6.62141cm</Top>
-              <Left>0.25133cm</Left>
+              <Left>0.65456cm</Left>
               <Height>0.77515cm</Height>
-              <Width>20.24349cm</Width>
+              <Width>19.84026cm</Width>
               <ZIndex>7</ZIndex>
               <Style>
                 <Border>
@@ -1194,54 +1196,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>7.50239cm</Top>
-              <Left>0.21482cm</Left>
+              <Top>7.46712cm</Top>
+              <Left>0.65456cm</Left>
               <Height>1.49096cm</Height>
-              <Width>11.16828cm</Width>
+              <Width>10.72854cm</Width>
               <ZIndex>8</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox9">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Contato Comercial: (37)99140-9472                                             </Value>
-                      <Style>
-                        <FontFamily>trebuchet ms</FontFamily>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value />
-                      <Style>
-                        <FontFamily>trebuchet ms</FontFamily>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>2.36112cm</Top>
-              <Left>14.12964cm</Left>
-              <Height>0.66173cm</Height>
-              <Width>6.36518cm</Width>
-              <ZIndex>9</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1313,7 +1272,7 @@
               <Left>15.149cm</Left>
               <Height>1.54458cm</Height>
               <Width>5.45041cm</Width>
-              <ZIndex>10</ZIndex>
+              <ZIndex>9</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1383,9 +1342,9 @@
               <rd:DefaultName>Textbox33</rd:DefaultName>
               <Top>7.46711cm</Top>
               <Left>11.3831cm</Left>
-              <Height>1.63207cm</Height>
+              <Height>1.49097cm</Height>
               <Width>9.07521cm</Width>
-              <ZIndex>11</ZIndex>
+              <ZIndex>10</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1419,10 +1378,6 @@
       <DataType>String</DataType>
       <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="IDNota">
-      <DataType>Integer</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="nomeCli">
@@ -1551,11 +1506,6 @@
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>dataEntrada</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>2</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>IDNota</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>3</ColumnIndex>
