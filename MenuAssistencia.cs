@@ -20,11 +20,7 @@ namespace Assistencia_Técnica
             UserSenha = userSenha;
 
             InitializeComponent();
-            MySqlConexao usuario = new MySqlConexao();   
-            //obtem o nome do usuario e pega o primeiro nome
-            labelUsuario.Text = string.Format("Bem-vindo(a), {0}",
-            usuario.ObterUsuario(user, userSenha).Substring(0,
-            usuario.ObterUsuario(user, userSenha).IndexOf(' ')));
+  
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -34,6 +30,14 @@ namespace Assistencia_Técnica
 
         private void MenuAssistencia_Load(object sender, EventArgs e)
         {
+            MySqlConexao usuario = new MySqlConexao();
+            //obtem o nome do usuario e pega o primeiro nome
+            String nomeUser = usuario.ObterUsuario(User, UserSenha);
+            if(nomeUser.Contains(' '))
+                labelUsuario.Text = String.Format("Bem-vindo(a), {0}", nomeUser.Substring(0,nomeUser.IndexOf(' ')));
+            else
+                labelUsuario.Text = String.Format("Bem-vindo(a), {0}", nomeUser);
+
             timer1.Start();
           
         }
@@ -60,9 +64,8 @@ namespace Assistencia_Técnica
         }
 
         private void sair_Click(object sender, EventArgs e)
-        {
-            MySqlConnection mySqlConexao = MySqlConexao.ConexaoDB();
-            mySqlConexao.Close();
+        {            
+            MySqlConexao.fecharConexao();
             Application.Exit();
         }
 

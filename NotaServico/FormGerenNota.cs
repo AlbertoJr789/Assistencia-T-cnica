@@ -12,7 +12,6 @@ namespace Assistencia_Técnica
 {
     public partial class FormGerenNota : Form
     {
-
         private DataTable tabelaNotas = null;
 
         public FormGerenNota()
@@ -158,7 +157,6 @@ namespace Assistencia_Técnica
                 this.tabelaNotas.DefaultView.RowFilter = string.Format("NomeCliente LIKE '{0}%'", textBusca.Text);
 
             }
-
 
         }
 

@@ -81,16 +81,14 @@ namespace Assistencia_Técnica
             if (dataGridClientes.Columns[e.ColumnIndex] is DataGridViewButtonColumn
                 && e.RowIndex >= 0)
             {
-                
                 if (e.ColumnIndex == dataGridClientes.Columns["Editar"].Index)
                 {//clicou no botao de editar
-
                     DataGridViewRow linhaCliente = dataGridClientes.Rows[e.RowIndex];
                     CadastroCliente editarCad = new CadastroCliente(true,linhaCliente);
                     editarCad.ShowDialog();
                     MostrarClientes("SELECT * FROM cliente");
                 }
-                
+        
                 if (e.ColumnIndex == dataGridClientes.Columns["Excluir"].Index)
                 { //clicou no botao de excluir
 
@@ -103,7 +101,6 @@ namespace Assistencia_Técnica
                     }
 
                 }
-
 
             }
             else

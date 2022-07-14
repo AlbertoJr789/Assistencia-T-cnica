@@ -1120,6 +1120,11 @@ namespace Assistencia_Técnica
             return (aP == "") ? aRS : aP;
         }
 
+        private void tableLayoutPanel15_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         /*
         private void dataSaida_Validated(object sender, EventArgs e)
         {

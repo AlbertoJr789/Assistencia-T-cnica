@@ -138,6 +138,12 @@
     <Compile Include="Clientes\FormCadCliente.Designer.cs">
       <DependentUpon>FormCadCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfigDatabaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigDatabaseForm.Designer.cs">
+      <DependentUpon>ConfigDatabaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Funcionarios\FormCadFuncionarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +228,9 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Clientes\FormCadCliente.resx">
       <DependentUpon>FormCadCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigDatabaseForm.resx">
+      <DependentUpon>ConfigDatabaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Funcionarios\FormCadFuncionarios.resx">
       <DependentUpon>FormCadFuncionarios.cs</DependentUpon>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,30 +13,240 @@ namespace Assistencia_Técnica
     public class MySqlConexao
     {
 
-        public static string URL = "server=localhost;database=assistenciatecnica;uid=root;pwd=22021148;port=3306";
-
         private static MySqlConnection conexao = null;
-        public static MySqlConnection ConexaoDB()
-        {
 
+        public static MySqlConnection ConexaoDB(String URL)
+        {
             if (conexao == null)
             {
                 try
                 {
                     conexao = new MySqlConnection(URL);
-                    conexao.Open();               
+                    conexao.Open();
+                    
+                    MessageBox.Show("Conexão estabelecida com sucesso!", "Conexão com o Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show(ex.Message);
-                   
+                    conexao = null;
+                    MessageBox.Show("Erro ao abrir conexão com o banco de dados: " + ex.Message,"Conexão com o banco de dados",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);                 
                 }
-
+            }
+            return conexao;
+        }
+        public static void fecharConexao()
+        {
+            if(conexao != null)
+            {
+                try 
+                { 
+                    conexao.Close();             
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao fechar conexão com o banco de dados: " + ex.Message,"Conexão com o banco de dados",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
 
             }
 
-            return conexao;
         }
+        public static void criarDB(string URL)
+        {
+            MySqlDataReader leitor = null;
+
+            if (conexao != null) 
+            {
+                try 
+                {
+                    
+                    MySqlCommand comando = new MySqlCommand("", conexao);
+                  
+                    comando.CommandText = @"
+                          
+                          CREATE DATABASE IF NOT EXISTS `assistenciatecnica`; 
+                          USE `assistenciatecnica`;
+
+                          CREATE TABLE IF NOT EXISTS `Endereco` (
+                          `ID_Endereco` INT NOT NULL AUTO_INCREMENT,
+                          `Logradouro` VARCHAR(45) NOT NULL,
+                          `Número` VARCHAR(10) NOT NULL,
+                          `Bairro` VARCHAR(45) NOT NULL,
+                          `Estado` VARCHAR(45) NOT NULL,
+                          `Cidade` VARCHAR(45) NOT NULL,
+                          PRIMARY KEY (`ID_Endereco`));
+  
+                          CREATE TABLE IF NOT EXISTS `Contato` (
+                          `ID_Contato` INT NOT NULL AUTO_INCREMENT,
+                          `Telefone` VARCHAR(45) NOT NULL,
+                          `Telefone2` VARCHAR(45) NULL,
+                          PRIMARY KEY (`ID_Contato`));
+  
+                          CREATE TABLE IF NOT EXISTS `Cliente` (
+                          `ID_Cliente` INT NOT NULL AUTO_INCREMENT,
+                          `Nome_Cliente` VARCHAR(127) NOT NULL,
+                          `RG_Cliente` VARCHAR(45) NULL,
+                          `CPF_Cliente` VARCHAR(45) NULL,
+                          `ID_Endereco` INT NOT NULL,
+                          `ID_Contato` INT NOT NULL,
+                          PRIMARY KEY (`ID_Cliente`, `ID_Endereco`, `ID_Contato`),
+                          INDEX `fk_Cliente_Endereco1_idx` (`ID_Endereco` ASC) VISIBLE,
+                          INDEX `fk_Cliente_Contato1_idx` (`ID_Contato` ASC) VISIBLE,
+                          CONSTRAINT `fk_Cliente_Endereco1`
+                            FOREIGN KEY (`ID_Endereco`)
+                            REFERENCES `Endereco` (`ID_Endereco`)
+                            ON DELETE CASCADE
+                            ON UPDATE CASCADE,
+                          CONSTRAINT `fk_Cliente_Contato1`
+                            FOREIGN KEY (`ID_Contato`)
+                            REFERENCES `Contato` (`ID_Contato`)
+                            ON DELETE NO ACTION
+                            ON UPDATE NO ACTION);
+	
+                        CREATE TABLE IF NOT EXISTS `Funcionario` (
+                          `ID_Funcionario` INT NOT NULL AUTO_INCREMENT,
+                          `Nome_Funcionario` VARCHAR(127) NOT NULL,
+                          `Função` VARCHAR(45) NOT NULL,
+                          `RG_Funcionario` VARCHAR(45) NULL,
+                          `CPF_Funcionario` VARCHAR(45) NULL,
+                          `ID_Contato` INT NOT NULL,
+                          `ID_Endereco` INT NOT NULL,
+                          PRIMARY KEY (`ID_Funcionario`, `ID_Contato`, `ID_Endereco`),
+                          INDEX `fk_Cliente_Contato1_idx` (`ID_Contato` ASC) VISIBLE,
+                          INDEX `fk_Cliente_Endereco1_idx` (`ID_Endereco` ASC) VISIBLE,
+                          CONSTRAINT `fk_Cliente_Contato10`
+                            FOREIGN KEY (`ID_Contato`)
+                            REFERENCES `Contato` (`ID_Contato`)
+                            ON DELETE CASCADE
+                            ON UPDATE CASCADE,
+                          CONSTRAINT `fk_Cliente_Endereco10`
+                            FOREIGN KEY (`ID_Endereco`)
+                            REFERENCES `Endereco` (`ID_Endereco`)
+                            ON DELETE CASCADE
+                            ON UPDATE CASCADE);
+	
+                        CREATE TABLE IF NOT EXISTS `LoginUsuario` (
+                          `ID_Login` INT NOT NULL AUTO_INCREMENT,
+                          `ID_Funcionario_Login` INT NOT NULL,
+                          `Usuario` VARCHAR(45) NOT NULL,
+                          `Senha` VARCHAR(45) NOT NULL,
+                          `Tipo` VARCHAR(45) NOT NULL COMMENT 'Tipo de usuário, administrador,vendedor, gerente',
+                          PRIMARY KEY (`ID_Login`, `ID_Funcionario_Login`),
+                          INDEX `fk_LoginUsuario_Funcionario1_idx` (`ID_Funcionario_Login` ASC) VISIBLE,
+                          CONSTRAINT `fk_LoginUsuario_Funcionario1`
+                            FOREIGN KEY (`ID_Funcionario_Login`)
+                            REFERENCES `Funcionario` (`ID_Funcionario`)
+                            ON DELETE NO ACTION
+                            ON UPDATE NO ACTION);	
+	
+                        CREATE TABLE IF NOT EXISTS `Produto` (
+                          `ID` INT NOT NULL AUTO_INCREMENT,
+                          `Nome_Produto` VARCHAR(45) NOT NULL,
+                          `Preco_Produto` DECIMAL(10,2) NOT NULL,
+                          `Estoque` INT NOT NULL,
+                          PRIMARY KEY (`ID`)); 
+  
+                        CREATE TABLE IF NOT EXISTS `Servico` (
+                          `ID` INT NOT NULL AUTO_INCREMENT,
+                          `Nome_Servico` VARCHAR(45) NOT NULL,
+                          `Preco_Servico` DECIMAL(10,2) NOT NULL,
+                          PRIMARY KEY (`ID`));
+    
+                        CREATE TABLE IF NOT EXISTS `Nota_Servico` (
+                          `ID_Nota_Servico` INT NOT NULL AUTO_INCREMENT,
+                          `Data` DATE NOT NULL,
+                          `ID_Cliente` INT NOT NULL,
+                          `ID_Funcionario` INT NOT NULL,
+                          `Valor_Nota` DECIMAL(10,2) NOT NULL,
+                          `Acrescimo` VARCHAR(20) NULL DEFAULT NULL,
+                          `Desconto` VARCHAR(20) NULL DEFAULT NULL,
+                          `Observacoes` MEDIUMTEXT NULL DEFAULT NULL,
+                          PRIMARY KEY (`ID_Nota_Servico`),
+                          INDEX `fk_Ordem_Servico_Cliente1_idx` (`ID_Cliente` ASC) VISIBLE,
+                          INDEX `fk_Ordem_Servico_Funcionario1_idx` (`ID_Funcionario` ASC) VISIBLE,
+                          CONSTRAINT `fk_Ordem_Servico_Cliente1`
+                            FOREIGN KEY (`ID_Cliente`)
+                            REFERENCES `Cliente` (`ID_Cliente`)
+                            ON UPDATE CASCADE,
+                          CONSTRAINT `fk_Ordem_Servico_Funcionario1`
+                            FOREIGN KEY (`ID_Funcionario`)
+                            REFERENCES `Funcionario` (`ID_Funcionario`)
+                            ON UPDATE CASCADE);
+		
+                        CREATE TABLE IF NOT EXISTS `Servicos_Nota` (
+                          `ID_Nota_Servico` INT NOT NULL,
+                          `ID_Servico` INT NOT NULL,
+                          `Quantidade_Servico` INT NULL DEFAULT NULL,
+                          `Preco_Unitario` DECIMAL(10,2) NULL DEFAULT NULL,
+                          PRIMARY KEY (`ID_Nota_Servico`, `ID_Servico`),
+                          INDEX `fk_Ordem_Servico_has_Servico_Servico1_idx` (`ID_Servico` ASC) VISIBLE,
+                          INDEX `fk_Ordem_Servico_has_Servico_Ordem_Servico1_idx` (`ID_Nota_Servico` ASC) VISIBLE,
+                          CONSTRAINT `fk_Ordem_Servico_has_Servico_Ordem_Servico1`
+                            FOREIGN KEY (`ID_Nota_Servico`)
+                            REFERENCES `Nota_Servico` (`ID_Nota_Servico`),
+                          CONSTRAINT `fk_Ordem_Servico_has_Servico_Servico1`
+                            FOREIGN KEY (`ID_Servico`)
+                            REFERENCES `Servico` (`ID`));
+		
+                         CREATE TABLE IF NOT EXISTS `Produtos_Nota` (
+                          `ID_Nota_Produto` INT NOT NULL,
+                          `ID_Produto` INT NOT NULL,
+                          `Quantidade_Produto` INT NULL DEFAULT NULL,
+                          `Preco_Unitario` DECIMAL(10,2) NULL DEFAULT NULL,
+                          PRIMARY KEY (`ID_Nota_Produto`, `ID_Produto`),
+                          INDEX `fk_Ordem_Servico_has_Produto_Produto1_idx` (`ID_Produto` ASC) VISIBLE,
+                          INDEX `fk_Ordem_Servico_has_Produto_Ordem_Servico1_idx` (`ID_Nota_Produto` ASC) VISIBLE,
+                          CONSTRAINT `fk_Ordem_Servico_has_Produto_Ordem_Servico1`
+                            FOREIGN KEY (`ID_Nota_Produto`)
+                            REFERENCES `Nota_Servico` (`ID_Nota_Servico`),
+                          CONSTRAINT `fk_Ordem_Servico_has_Produto_Produto1`
+                            FOREIGN KEY (`ID_Produto`)
+                            REFERENCES `Produto` (`ID`));
+
+                    ";
+                    comando.ExecuteNonQuery();
+
+                    comando.CommandText = "SELECT * FROM loginusuario";
+                    leitor = comando.ExecuteReader();
+
+                    if (!leitor.HasRows) //cria user admin, se não tiver sido criado
+                    {
+                        leitor.Close();
+
+                        comando.CommandText = @"
+
+                            INSERT INTO Contato (Telefone,Telefone2) values ('(37)99140-9472','');
+                            
+                            INSERT INTO Endereco (Logradouro, Número, Bairro, Estado, Cidade) values ('', '', '', '', '');
+                        
+                            INSERT INTO funcionario (Nome_Funcionario, Função, RG_Funcionario, CPF_Funcionario, ID_Contato, ID_Endereco)
+                            values ('Administrador', 'Administrador', '', '', 1, 1);
+                            
+                            INSERT INTO loginusuario (ID_Funcionario_Login, Usuario, Senha, Tipo) values (1, 'admin', 'admin', 'Administrador');
+                            
+                           ";
+
+                        comando.ExecuteNonQuery();
+                    }
+                    
+                    using(StreamWriter sw = File.CreateText("conexaoDB"))
+                    {
+                        sw.WriteLine(String.Format("{0};database=assistenciatecnica",URL));
+
+                    }
+
+                }
+                catch(MySqlException ex) 
+                {
+
+                    MessageBox.Show("Erro ao criar o banco de dados: " + ex.StackTrace, "Criação do banco de dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                }
+
+                leitor.Close();
+            }
+
+        }
+
  
         // Leituras do Banco de Dados
         public void mostrarClientes(string cmd,DataGridView dgCli)
@@ -412,7 +623,7 @@ namespace Assistencia_Técnica
                 leitor.Dispose();
                 leitor.Close();
                 //obtendo o endereço do banco de dados
-                cmd = "SELECT * FROM endereco WHERE ID_Endereço=" + IdEnd;
+                cmd = "SELECT * FROM endereco WHERE ID_Endereco=" + IdEnd;
                 cmdCli.CommandText = cmd;
                 leitor = cmdCli.ExecuteReader();
                 
@@ -482,7 +693,7 @@ namespace Assistencia_Técnica
                 leitor.Dispose();
                 leitor.Close();
                 //obtendo o endereço do banco de dados
-                cmd = "SELECT * FROM endereco WHERE ID_Endereço=" + IdEnd;
+                cmd = "SELECT * FROM endereco WHERE ID_Endereco=" + IdEnd;
                 cmdCli.CommandText = cmd;
                 leitor = cmdCli.ExecuteReader();
 
@@ -600,26 +811,26 @@ namespace Assistencia_Técnica
 
             try
             {
-                string cmd = "SELECT Logradouro FROM endereco WHERE ID_Endereço = @id";
+                string cmd = "SELECT Logradouro FROM endereco WHERE ID_Endereco = @id";
 
                 MySqlCommand comando = new MySqlCommand(cmd, conexao);
                 comando.Parameters.AddWithValue("@id", ID_Endereco);
 
                 string log = (string)comando.ExecuteScalar();
 
-                cmd = "SELECT Número FROM endereco WHERE ID_Endereço = @id";
+                cmd = "SELECT Número FROM endereco WHERE ID_Endereco = @id";
                 comando.CommandText = cmd;
                 string num = (string)comando.ExecuteScalar();
 
-                cmd = "SELECT Bairro FROM endereco WHERE ID_Endereço = @id";
+                cmd = "SELECT Bairro FROM endereco WHERE ID_Endereco = @id";
                 comando.CommandText = cmd;
                 string bairro = (string)comando.ExecuteScalar();
 
-                cmd = "SELECT Estado FROM endereco WHERE ID_Endereço = @id";
+                cmd = "SELECT Estado FROM endereco WHERE ID_Endereco = @id";
                 comando.CommandText = cmd;
                 string estado = (string)comando.ExecuteScalar();
 
-                cmd = "SELECT Cidade FROM endereco WHERE ID_Endereço = @id";
+                cmd = "SELECT Cidade FROM endereco WHERE ID_Endereco = @id";
                 comando.CommandText = cmd;
                 string cidade = (string)comando.ExecuteScalar();
 
@@ -668,17 +879,17 @@ namespace Assistencia_Técnica
         }
         public string ObterUsuario(string user, string userSenha)
         {
-            string usuario = null;
 
             try
             {
-                string cmd = "SELECT ID_Funcionario_Login FROM loginusuario WHERE Usuario ='" + user + "' AND Senha='" + userSenha + "'";
+                string cmd = @"SELECT Nome_Funcionario FROM funcionario 
+	                           WHERE ID_Funcionario = (SELECT ID_Funcionario_Login FROM loginusuario 
+                               WHERE Usuario = @user AND Senha = @userSenha) 
+                              ";
                 MySqlCommand comando = new MySqlCommand(cmd, conexao);
-                int ID_Funcionario = (int)comando.ExecuteScalar(); //pega o elemento da primeira coluna
-
-                cmd = "SELECT Nome_Funcionario FROM funcionario WHERE ID_Funcionario = " + ID_Funcionario;
-                comando.CommandText = cmd;
-
+                comando.Parameters.AddWithValue("@user", user);
+                comando.Parameters.AddWithValue("@userSenha", userSenha);
+             
                 return (string)comando.ExecuteScalar();
 
             }
@@ -688,20 +899,21 @@ namespace Assistencia_Técnica
 
             }
 
-            return usuario;
+            return null;
         }
         public bool ChecarLogin(string user,string userSenha)
         {
             MySqlDataReader leitor = null;
             try
             {               
-                string cmd = "SELECT * FROM loginusuario WHERE Usuario ='"+ user +"' AND Senha='" + userSenha + "'";
+                String cmd = "SELECT * FROM loginusuario WHERE Usuario = @user AND Senha= @senha";
                 MySqlCommand comando = new MySqlCommand(cmd,conexao);
-                 leitor = comando.ExecuteReader();
+                comando.Parameters.AddWithValue("@user", user);
+                comando.Parameters.AddWithValue("@senha", userSenha);
+                leitor = comando.ExecuteReader();
 
                 if (leitor.HasRows) //se tiver encontrado algum registro
                 {
-
                     leitor.Close();
                     return true;
 
@@ -1112,7 +1324,7 @@ namespace Assistencia_Técnica
             try
             {
                 string cmd = "UPDATE endereco SET Logradouro = @log,Número = @num," +
-                    "Bairro = @bairro,Estado = @est,Cidade = @cid WHERE ID_Endereço=" + ID;
+                    "Bairro = @bairro,Estado = @est,Cidade = @cid WHERE ID_Endereco=" + ID;
                    
 
                 MySqlCommand comando = new MySqlCommand(cmd, conexao);
@@ -1306,24 +1518,12 @@ namespace Assistencia_Técnica
 
             }
         }
-        public void excluirNota(DataGridViewRow dadosNota)
-        {
-
-
-
-
-
-
-
-
-
-        }
         public void excluirEndereco(int ID)
         {
             try
             {
 
-                string cmd = "DELETE FROM endereco WHERE ID_Endereço=" + ID;
+                string cmd = "DELETE FROM endereco WHERE ID_Endereco=" + ID;
                 MySqlCommand comando = new MySqlCommand(cmd, conexao);
                 comando.ExecuteNonQuery();
                            

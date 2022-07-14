@@ -26,3 +26,26 @@ C:\Users\jr_jo\Desktop\saida vs\SqlServerTypes\x64\msvcr120.dll
 C:\Users\jr_jo\Desktop\saida vs\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Users\jr_jo\Desktop\saida vs\SqlServerTypes\x86\msvcr120.dll
 C:\Users\jr_jo\Desktop\saida vs\SqlServerTypes\x86\SqlServerSpatial140.dll
+D:\JR\Códigos\C#\Assistencia Técnica\obj\Debug\Assistencia_Técnica.ConfigDatabaseForm.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia Técnica.csproj.AssemblyReference.cache
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia Técnica.csproj.SuggestedBindingRedirects.cache
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.CadastroCliente.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.ConfigDatabaseForm.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormCadFuncionarios.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormCadNota.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormCadServicos.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormGerenNota.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormGerenProdutos.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormGerenClientes.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormGerenFuncionarios.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormCadProdutos.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormGerenServicos.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.LoginForm.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.MenuAssistencia.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.FormPrintNota.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.Properties.Resources.resources
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia Técnica.csproj.GenerateResource.cache
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia Técnica.csproj.CoreCompileInputs.cache
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia Técnica.csproj.CopyComplete
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.exe
+C:\Users\jr_jo\Source\Repos\AlbertoJr789\Assistencia Técnica\obj\Debug\Assistencia_Técnica.pdb
